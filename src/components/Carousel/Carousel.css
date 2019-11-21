@@ -8,10 +8,16 @@
 
 .carousel {
   width: 100%;
-
+  margin-bottom: 20px;
 }
 
 .carousel-container {
   position: relative;
-  width: 100vw;
+  width: 100%;
+}
+
+.container {
+  margin: 0 50px 0 50px;
+  padding: 0 50px 0 50px;
+  width: 100%;
 }

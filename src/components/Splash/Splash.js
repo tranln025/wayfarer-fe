@@ -2,16 +2,15 @@ import React from 'react';
 import Carousel from '../Carousel/Carousel';
 import About from '../About/About';
 
+import './Splash.css'
 
 const Splash = (props) => {
   console.log(props)
   return(
-    <div className="container">
-      <div className="container row">
-        <Carousel />
-        <h1>Wayfarer is...</h1>
-        <About />
-      </div>
+    <div className="splash-container">
+      <Carousel />
+      <h1>Wayfarer is...</h1>
+      <About />
     </div>
   )
 };

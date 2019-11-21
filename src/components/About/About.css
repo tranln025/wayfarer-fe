@@ -2,4 +2,9 @@
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  margin: 0 auto;
+}
+
+.topics {
+  margin: 20px 20px;
 }
