@@ -8,13 +8,31 @@ import './EditUserInfo.css';
 class EditUserInfo extends Component {
 
     state = {
-        profile: this.props.profile,
+        // profile: {
+        //     username: '',
+        //     email: '',
+        //     photo: '',
+        //     currentCity: '',
+        // },
+        username: '',
+        email: '',
+        photo: '',
+        currentCity: '',
         storageref: firebase.storage().ref(),
+    }
+
+    componentDidMount() {
+        this.setState({ 
+            username: this.props.profile.username,
+            email: this.props.profile.email,
+            photo: this.props.profile.photo,
+            currentCity: this.props.profile.currentCity,
+        })
     }
     
     handleChange = (event) => {
-        this.setState({ profile: {
-            [event.target.name]: event.target.value,}
+        this.setState({
+            [event.target.name]: event.target.value,
         })
      };
 
@@ -22,12 +40,18 @@ class EditUserInfo extends Component {
         console.log("updating user info")
         const userId = localStorage.getItem('uid');
         event.preventDefault();
-        axios.put(`${process.env.REACT_APP_API_URL}/users/${userId}/update`, this.state.profile, {
+        let body = {
+            username: this.state.username,
+            email: this.state.email,
+            photo: this.state.photo,
+            currentCity: this.state.currentCity,
+        }
+        axios.put(`${process.env.REACT_APP_API_URL}/users/${userId}/update`, body, {
             withCredentials: true,
         })
             .then((res)=>{
                 console.log(res);
-                this.props.updateState(this.state.profile);
+                this.props.updateState(body);
             })
             .catch((err)=>console.log(err));
     };
@@ -40,9 +64,9 @@ class EditUserInfo extends Component {
             this.state.storageref.child(`/images/user-${localStorage.getItem('uid')}`).put(this.state.selectedFile, {contentType: 'image/jpeg'}).then(snap => {
                 snap.ref.getDownloadURL().then(url => {
                     console.log(url);
-                    this.setState({profile: {
+                    this.setState( {
                     photo: url,
-                    }});
+                    });
                 })
             })
         })
@@ -55,20 +79,20 @@ class EditUserInfo extends Component {
             <h1>User details</h1>
             <form onSubmit={this.props.saveChanges}>
                 <div className="avatar-container">
-                <img id="avatar" src={this.props.profile.photo}></img>
+                <img id="avatar" src={this.state.photo}></img>
                 </div>
                 <input type="file" onChange={ (e) => this.fileSelectedHanler(e.target.files) } />
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
-                    <input onChange={this.handleChange} className="form-control form-control-lg" type="text" name="username" value={this.state.profile.username} />
+                    <input onChange={this.handleChange} className="form-control form-control-lg" type="text" name="username" value={this.state.username} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
-                    <input onChange={this.handleChange} className="form-control form-control-lg" type="email" name="email" value={this.state.profile.email} />
+                    <input onChange={this.handleChange} className="form-control form-control-lg" type="email" name="email" value={this.state.email} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="currentCity">Email</label>
-                    <input onChange={this.handleChange} className="form-control form-control-lg" type="email" name="currentCity" value={this.state.profile.currentCity} />
+                    <label htmlFor="currentCity">Current City</label>
+                    <input onChange={this.handleChange} className="form-control form-control-lg" type="text" name="currentCity" value={this.state.currentCity} />
                 </div>
                 
                 <button name="save-ptofile" onClick={this.saveChanges}>Save</button>
