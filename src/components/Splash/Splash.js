@@ -1,16 +1,19 @@
 import React from 'react';
-import Login from '../Auth/Login.js';
-import Signup from '../Auth/Signup.js';
+import Carousel from '../Carousel/Carousel';
+import About from '../About/About';
+
 
 const Splash = (props) => {
   console.log(props)
   return(
-    <div className="container">
-    <h1>Wayfarer</h1>
-    <Signup />
-    <Login currentUser={props.currentUser} setCurrentUser={props.setCurrentUser}/>
-  </div>
+    <div className='container'>
+      <div className="container row">
+        <Carousel />
+        <h1>Wayfarer is...</h1>
+        <About />
+      </div>
+    </div>
   )
 };
 
-export default  Splash;
+export default Splash;
