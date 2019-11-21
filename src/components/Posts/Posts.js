@@ -6,7 +6,7 @@ const Posts = props => {
   const posts = props.posts.map(post => {
     return (
       // Uncomment once placeholder api is replaced with data
-      // <div className="card mb-3">
+      // <div key={post.id} className="card mb-3">
       //   <img src={post.photo} className="card-img-top" alt={post.title} />
       //   <div className="card-body">
       //     <h5 className="card-title">{post.title}</h5>
@@ -15,7 +15,7 @@ const Posts = props => {
       //   </div>  
       // </div>
 
-      <div className="card mb-3">
+      <div key={post.id} className="card mb-3">
         <img src="https://picsum.photos/500/200" className="card-img-top" alt={post.title} />
         <div className="card-body">
           <h5 className="card-title">{post.title}</h5>
