@@ -6,13 +6,17 @@ import ProfileContainer from '../containers/ProfileContainer/ProfileContainer';
 // import City from '../components/City/City';
 // import Post from '../components/Post/Post';
 
+import './Routes.css'
+
 export default ({ currentUser, setCurrentUser }) => (
-  <Switch>
-    <Route exact path="/"  render={() => <Splash currentUser={currentUser} setCurrentUser={setCurrentUser}/>} />
-    <Route path="/users/:id" component={ProfileContainer} />
-    {/* <Route path="/cities/:cityId" component={City} />
-    <Route path="/posts/:postId" component={Post} /> */}
-  </Switch>
+  <div className="routes">
+    <Switch>
+      <Route exact path="/"  render={() => <Splash currentUser={currentUser} setCurrentUser={setCurrentUser}/>} />
+      <Route path="/users/:id" component={ProfileContainer} />
+      {/* <Route path="/cities/:cityId" component={City} />
+      <Route path="/posts/:postId" component={Post} /> */}
+    </Switch>
+  </div>
 )
 
 // component={Splash}
