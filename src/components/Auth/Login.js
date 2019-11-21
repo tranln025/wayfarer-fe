@@ -28,14 +28,15 @@ class Login extends Component {
       console.log(res);
       console.log(`>>>>>${this.props}`)
       this.props.setCurrentUser(res.data.data);
-      console.log(this.props.currentUser)
+      this.props.history.push('/profile');
+      this.props.handleLoginModalOpen();
     })
     .catch((error) => console.log(error));
   }
 
   render() {
     return (
-      <Modal setCurrentUser={this.props.setCurrentUser} show={this.props.loginModalOpen} onHide={this.props.handleLoginModalOpen}>
+      <Modal show={this.props.loginModalOpen} onHide={this.props.handleLoginModalOpen}>
         <Modal.Header closeButton>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
@@ -44,7 +45,7 @@ class Login extends Component {
             <div className="row">
               <div className="col-md-4 offset-md-4">
                 <h4 className="mb-3">Login</h4>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} >
                   <div className="form-group">
                     <label htmlFor="name">Username</label>
                     <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="username" name="username" value={this.state.username} />
