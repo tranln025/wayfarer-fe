@@ -26,6 +26,8 @@ class Login extends Component {
     })
     .then((res) => {
       console.log(res);
+      this.props.setCurrentUser(res.data.data);
+      console.log(this.props.currentUser)
     })
     .catch((error) => console.log(error));
   }

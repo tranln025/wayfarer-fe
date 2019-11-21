@@ -6,11 +6,13 @@ import ProfileContainer from '../containers/ProfileContainer/ProfileContainer';
 // import City from '../components/City/City';
 // import Post from '../components/Post/Post';
 
-export default () => (
+export default ({ currentUser, setCurrentUser }) => (
   <Switch>
-    <Route exact path="/" component={Splash} />
-    <Route path="/users/:userId" component={ProfileContainer} />
+    <Route exact path="/"  render={() => <Splash currentUser={currentUser} setCurrentUser={setCurrentUser}/>} />
+    {/* <Route path="/users/:id" component={Profile} /> */}
     {/* <Route path="/cities/:cityId" component={City} />
     <Route path="/posts/:postId" component={Post} /> */}
   </Switch>
 )
+
+// component={Splash}

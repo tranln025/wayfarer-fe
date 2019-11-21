@@ -1,8 +1,11 @@
-import React, {Component} from 'react';
-import Routes from './config/Routes';
+//External Imports
+import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
-import Navbar from './components/Navbar/Navbar';
+//Internal Imports
+import Routes from './config/Routes';
+import Navbar from './Navbar/Navbar';
 
 import './App.css';
 
@@ -24,18 +27,18 @@ class App extends Component {
         this.setState({ currentUser: null });
         this.props.history.push('/login');
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
   }
-
+  
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar currentUser={this.state.currentUser} />
         <h1>Ali Sux</h1>
-        <Routes />
+        <Routes currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} />
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
