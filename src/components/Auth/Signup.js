@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Signup extends Component {
   state = {

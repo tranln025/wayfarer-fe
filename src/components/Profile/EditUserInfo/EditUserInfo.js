@@ -16,7 +16,7 @@ class EditUserInfo extends Component {
         this.setState({ profile: {
             [event.target.name]: event.target.value,}
         })
-     };
+    };
 
     saveChanges = (event) => {
         console.log("updating user info")
@@ -55,7 +55,7 @@ class EditUserInfo extends Component {
             <h1>User details</h1>
             <form onSubmit={this.props.saveChanges}>
                 <div className="avatar-container">
-                <img id="avatar" src={this.props.profile.photo}></img>
+                <img id="avatar" src={this.props.profile.photo} alt="avatar"></img>
                 </div>
                 <input type="file" onChange={ (e) => this.fileSelectedHanler(e.target.files) } />
                 <div className="form-group">

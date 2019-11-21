@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-import Profile from '../../components/Profile/Profile';
 import UserInfo from '../../components/Profile/UserInfo/UserInfo'
 import EditUserInfo from '../../components/Profile/EditUserInfo/EditUserInfo'
 import PostsContainer from '../PostsContainer/PostsContainer';
 import firebase from '../../firebase';
 import { throwStatement } from '@babel/types';
 
+import './ProfileContainer.css'
 
 class ProfileContainer extends Component {
   state = {
