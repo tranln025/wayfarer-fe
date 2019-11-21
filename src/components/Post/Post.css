@@ -1,0 +1,21 @@
+.hero {
+  background: red;
+  height: 60vh;
+}
+
+.hero img {
+  height: 60vh;
+  width: 100%;
+}
+
+.post-info {
+  margin-left: 30px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 20px;
+}
