@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 //Internal Imports
 import Routes from './config/Routes';
-import Navbar from './Navbar/Navbar';
+import Navbar from './components/Navbar/Navbar';
 
 import './App.css';
 
