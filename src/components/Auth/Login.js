@@ -9,16 +9,6 @@ class Login extends Component {
   state = {
     username: '',
     password: '',
-    show: false,
-  };
-
-  handleClose() {
-    this.setState({ show: false });
-  };
-
-  handleShow = (event) => {
-    this.setState({ show: true });
-    console.log(this);
   };
 
   handleChange = (event) => {
@@ -40,14 +30,9 @@ class Login extends Component {
     .catch((error) => console.log(error));
   }
 
-render() {
-  return (
-    <>
-      <button variant="primary" onClick={this.handleShow}>
-        Login
-      </button>
-
-      <Modal show={this.state.show} onHide={this.handleClose}>
+  render() {
+    return (
+      <Modal show={this.props.loginModalOpen} onHide={this.props.handleLoginModalOpen}>
         <Modal.Header closeButton>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
@@ -70,16 +55,15 @@ render() {
               </div>
             </div>
           </div>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="danger" onClick={this.handleClose}>
-              Cancel
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </>
-  )
-}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={this.handleClose}>
+            Cancel
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    )
+  }
 };
 
 export default withRouter(Login);
