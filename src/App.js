@@ -39,7 +39,6 @@ class App extends Component {
       </div>
     );
   }
-
 }
 
 export default withRouter(App);

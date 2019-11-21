@@ -1,6 +1,6 @@
 import React from 'react';
-import Login from '../Auth/Login.js';
-import Signup from '../Auth/Signup.js';
+// import Login from '../Auth/Login.js';
+// import Signup from '../Auth/Signup.js';
 
 const Splash = (props) => {
   console.log(props)

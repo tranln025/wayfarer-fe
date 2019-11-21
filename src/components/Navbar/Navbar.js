@@ -1,17 +1,35 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
+import Login from '../Auth/Login';
+import Signup from '../Auth/Signup';
+
 class Navbar extends React.Component {
   state = {
-    modalOpen: false,
+    loginModalOpen: false,
+    signupModalOpen: false,
   }
 
-  handleModalOpen = () => {
-    console.log('show modal')
+  // Source for modal handling: https://stackoverflow.com/questions/56960664/how-to-make-popup-modal-appear-when-clicking-a-link
+  handleLoginModalOpen = () => {
+    this.setState((prevState) => {
+      return {
+        loginModalOpen: !prevState.loginModalOpen
+      }
+    });
+  };
+
+  handleSignupModalOpen = () => {
+    this.setState((prevState) => {
+      return {
+        signupModalOpen: !prevState.signupModalOpen
+      }
+    });
   };
 
   render () {
     return (
+      <>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark">
         <Link className="navbar-brand" to="/">Wayfarer</Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,10 +39,10 @@ class Navbar extends React.Component {
         <div className="collapse navbar-collapse" id="navbarsExample04">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <a className="nav-link" onClick={this.handleModalOpen}>Log in<span className="sr-only">(current)</span></a>
+              <a className="nav-link" onClick={this.handleLoginModalOpen}>Log in<span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" onClick={this.handleModalOpen}>Sign up</a>
+              <a className="nav-link" onClick={this.handleSignupModalOpen}>Sign up</a>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/profile">Profile</NavLink>
@@ -35,6 +53,9 @@ class Navbar extends React.Component {
           </form>
         </div>
       </nav>
+      <Login loginModalOpen={this.state.loginModalOpen} handleLoginModalOpen={this.handleLoginModalOpen} />
+      <Signup signupModalOpen={this.state.signupModalOpen} handleSignupModalOpen={this.handleSignupModalOpen} />
+      </>
     )
   }
 }

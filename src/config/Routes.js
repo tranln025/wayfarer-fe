@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Splash from '../components/Splash/Splash';
-// import Profile from '../components/Profile/Profile';
+import ProfileContainer from '../containers/ProfileContainer/ProfileContainer';
 // import City from '../components/City/City';
 // import Post from '../components/Post/Post';
 
