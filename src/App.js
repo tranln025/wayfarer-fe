@@ -1,4 +1,5 @@
 import React from 'react';
+import Routes from './config/Routes';
 
 import Navbar from './Navbar/Navbar';
 
@@ -9,6 +10,7 @@ function App() {
     <div>
       <Navbar />
       <h1>Ali Sux</h1>
+      <Routes />
     </div>
   );
 }

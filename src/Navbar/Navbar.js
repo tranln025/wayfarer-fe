@@ -1,31 +1,42 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
-const Navbar = () => {
-  return (
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Wayfarer</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+class Navbar extends React.Component {
+  state = {
+    modalOpen: false,
+  }
 
-      <div class="collapse navbar-collapse" id="navbarsExample04">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Log in<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Sign up</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-md-0">
-          <input class="form-control" type="text" placeholder="Search" />
-        </form>
-      </div>
-    </nav>
-  )
+  handleModalOpen = () => {
+    console.log('show modal')
+  };
+
+  render () {
+    return (
+      <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+        <Link className="navbar-brand" to="/">Wayfarer</Link>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+  
+        <div className="collapse navbar-collapse" id="navbarsExample04">
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <a className="nav-link" onClick={this.handleModalOpen}>Log in<span className="sr-only">(current)</span></a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" onClick={this.handleModalOpen}>Sign up</a>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/profile">Profile</NavLink>
+            </li>
+          </ul>
+          <form className="form-inline my-2 my-md-0">
+            <input className="form-control" type="text" placeholder="Search" />
+          </form>
+        </div>
+      </nav>
+    )
+  }
 }
 
 export default Navbar;
