@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { withRouter } from "react-router";
 
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
@@ -27,8 +28,12 @@ class Navbar extends React.Component {
     });
   };
 
+  handleProfileRedirect = () => {
+    const userId = localStorage.getItem('uid');
+    this.props.history.push(`/users/${userId}`);
+  }
+
   render () {
-    console.log(this.props)
     return (
       <>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark">
@@ -46,7 +51,7 @@ class Navbar extends React.Component {
               <a className="nav-link" onClick={this.handleSignupModalOpen}>Sign up</a>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/profile">Profile</NavLink>
+              <a className="nav-link" onClick={this.handleProfileRedirect}>Profile</a>
             </li>
           </ul>
           <form className="form-inline my-2 my-md-0">
@@ -61,4 +66,4 @@ class Navbar extends React.Component {
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);
