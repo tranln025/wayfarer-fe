@@ -41,10 +41,6 @@ class Login extends Component {
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="container mt-4">
-            <div className="row">
-              <div className="col-md-4 offset-md-4">
-                <h4 className="mb-3">Login</h4>
                 <form onSubmit={this.handleSubmit} >
                   <div className="form-group">
                     <label htmlFor="name">Username</label>
@@ -56,15 +52,7 @@ class Login extends Component {
                   </div>
                   <button className="btn btn-primary float-right" type="submit">Login</button>
                 </form>
-              </div>
-            </div>
-          </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="danger" onClick={this.handleClose}>
-            Cancel
-          </Button>
-        </Modal.Footer>
       </Modal>
     )
   }
