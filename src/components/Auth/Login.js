@@ -25,10 +25,10 @@ class Login extends Component {
       withCredentials: true,
     })
     .then((res) => {
-      console.log(res);
-      console.log(`>>>>>${this.props}`)
+      console.log("res.data.data >>>>", res.data.data);
+      console.log(`props>>>>>${this.props}`)
       this.props.setCurrentUser(res.data.data);
-      this.props.history.push('/profile');
+      this.props.history.push(`/users/${res.data.data}`);
       this.props.handleLoginModalOpen();
     })
     .catch((error) => console.log(error));

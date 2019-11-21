@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 import Profile from '../../components/Profile/Profile';
+import PostsContainer from '../PostsContainer/PostsContainer';
 
 class ProfileContainer extends Component {
   state = {
@@ -25,8 +26,11 @@ class ProfileContainer extends Component {
   render() {
     return (
       <div>
-        <h1>Profile</h1>
-        <Profile profile={this.state.profile} />
+        <h1>Profile Container</h1>
+        <div className="row">
+          <Profile profile={this.state.profile} />
+          <PostsContainer />
+        </div>
       </div>
     );
   };

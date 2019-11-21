@@ -1,8 +1,12 @@
 import React from 'react';
 
+import './Profile.css';
+
 const Profile = props => {
   return (
-    <h1>Profile</h1>
+    <div className="user-details">
+      <h1>User details</h1>
+    </div>
   )
 };
 

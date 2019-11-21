@@ -9,7 +9,7 @@ import ProfileContainer from '../containers/ProfileContainer/ProfileContainer';
 export default ({ currentUser, setCurrentUser }) => (
   <Switch>
     <Route exact path="/"  render={() => <Splash currentUser={currentUser} setCurrentUser={setCurrentUser}/>} />
-    {/* <Route path="/users/:id" component={Profile} /> */}
+    <Route path="/users/:id" component={ProfileContainer} />
     {/* <Route path="/cities/:cityId" component={City} />
     <Route path="/posts/:postId" component={Post} /> */}
   </Switch>
