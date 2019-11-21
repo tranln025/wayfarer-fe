@@ -28,6 +28,7 @@ class Navbar extends React.Component {
   };
 
   render () {
+    console.log(this.props)
     return (
       <>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark">
@@ -53,7 +54,7 @@ class Navbar extends React.Component {
           </form>
         </div>
       </nav>
-      <Login loginModalOpen={this.state.loginModalOpen} handleLoginModalOpen={this.handleLoginModalOpen} />
+      <Login loginModalOpen={this.state.loginModalOpen} handleLoginModalOpen={this.handleLoginModalOpen} setCurrentUser={this.props.setCurrentUser} />
       <Signup signupModalOpen={this.state.signupModalOpen} handleSignupModalOpen={this.handleSignupModalOpen} />
       </>
     )

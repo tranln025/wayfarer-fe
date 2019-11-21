@@ -33,7 +33,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar currentUser={this.state.currentUser} />
+        <Navbar currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} />
         <h1>Ali Sux</h1>
         <Routes currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} />
       </div>
