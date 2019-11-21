@@ -13,11 +13,12 @@ class Login extends Component {
   };
 
   handleClose() {
-    this.setState({ showL: false });
+    this.setState({ show: false });
   };
 
-  handleShow() {
+  handleShow = (event) => {
     this.setState({ show: true });
+    console.log(this);
   };
 
   handleChange = (event) => {
@@ -43,11 +44,11 @@ render() {
   return (
     <>
       <button variant="primary" onClick={this.handleShow}>
-        Launch demo modal
+        Login
       </button>
 
       <Modal show={this.state.show} onHide={this.handleClose}>
-        <Modal.Header closeeButton>
+        <Modal.Header closeButton>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
