@@ -6,7 +6,7 @@ import axios from 'axios';
 
 class Signup extends Component {
   state = {
-    userName: '',
+    username: '',
     email: '',
     currentCity: '',
     password: '',
@@ -33,12 +33,12 @@ class Signup extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state);
-    axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, this.state)
+    axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, this.state)
     .then((res) => {
       console.log(res);
     })
     .catch((error) => console.log(error)); 
-  }
+  };
 
   render() {
     return (
@@ -58,8 +58,8 @@ class Signup extends Component {
                   <h4 className="mb-3">Sign Up</h4>
                   <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
-                      <label htmlFor="name">fulName</label>
-                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="userName" name="fullName" value={this.state.fullName} />
+                      <label htmlFor="name">username</label>
+                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="username" name="username" value={this.state.username} />
                     </div>
                     <div className="form-group">
                       <label htmlFor="name">Email</label>
