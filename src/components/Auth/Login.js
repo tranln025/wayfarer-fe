@@ -26,6 +26,7 @@ class Login extends Component {
     })
     .then((res) => {
       console.log(res);
+      console.log(`>>>>>${this.props}`)
       this.props.setCurrentUser(res.data.data);
       console.log(this.props.currentUser)
     })
@@ -34,7 +35,7 @@ class Login extends Component {
 
   render() {
     return (
-      <Modal show={this.props.loginModalOpen} onHide={this.props.handleLoginModalOpen}>
+      <Modal setCurrentUser={this.props.setCurrentUser} show={this.props.loginModalOpen} onHide={this.props.handleLoginModalOpen}>
         <Modal.Header closeButton>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
