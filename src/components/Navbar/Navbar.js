@@ -34,6 +34,7 @@ class Navbar extends React.Component {
   }
 
   render () {
+    console.log(this.props)
     return (
       <>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark">
@@ -53,6 +54,9 @@ class Navbar extends React.Component {
             <li className="nav-item">
               <a className="nav-link" onClick={this.handleProfileRedirect}>Profile</a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" onClick={this.props.logout}>Logout</a>
+            </li>
           </ul>
           <form className="form-inline my-2 my-md-0">
             <input className="form-control" type="text" placeholder="Search" />
@@ -60,7 +64,7 @@ class Navbar extends React.Component {
         </div>
       </nav>
       <Login loginModalOpen={this.state.loginModalOpen} handleLoginModalOpen={this.handleLoginModalOpen} setCurrentUser={this.props.setCurrentUser} />
-      <Signup signupModalOpen={this.state.signupModalOpen} handleSignupModalOpen={this.handleSignupModalOpen} />
+      <Signup signupModalOpen={this.state.signupModalOpen} handleSignupModalOpen={this.handleSignupModalOpen} setCurrentUser={this.props.setCurrentUser} />
       </>
     )
   }

@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 //handlemodalopen from citycontainer
 
+
 class PostForm extends Component {
   state = {
     city: '',

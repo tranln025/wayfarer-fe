@@ -5,7 +5,7 @@ import UserInfo from '../../components/Profile/UserInfo/UserInfo'
 import EditUserInfo from '../../components/Profile/EditUserInfo/EditUserInfo'
 import PostsContainer from '../PostsContainer/PostsContainer';
 import firebase from '../../firebase';
-import { throwStatement } from '@babel/types';
+
 
 import './ProfileContainer.css'
 
@@ -23,7 +23,7 @@ class ProfileContainer extends Component {
       withCredentials: true,
     })
       .then(res => {
-        console.log(res);
+        console.log('res.data>>>>>>>>>', res.data);
         this.setState({
           profile: res.data.data,
         });
@@ -75,7 +75,7 @@ class ProfileContainer extends Component {
           <EditUserInfo profile={this.state.profile} fileSelectedHanler={this.fileSelectedHanler} toggleEditMode={this.toggleEditMode} updateState={this.updateState} /> 
           : <UserInfo profile={this.state.profile} fileSelectedHanler={this.fileSelectedHanler} saveChanges={this.saveChanges} editMode={this.editMode}/>}
           {/* <UserInfo profile={this.state.profile} fileSelectedHanler={this.fileSelectedHanler} editMode={this.editMode}/> */}
-          <PostsContainer />
+          <PostsContainer currentUser={this.props.currentUser}/>
         </div>
       </div>
     );
