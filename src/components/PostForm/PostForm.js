@@ -12,6 +12,7 @@ class PostForm extends Component {
     city: '',
     title: '',
     content: '',
+    photo: '',
   };
 
   handleChange = (event) => {
@@ -20,23 +21,38 @@ class PostForm extends Component {
     });
   };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post(`${process.env.REACT_APP_API_URL}/posts/new`,
+    this.state, {
+      withCredentials: true,
+    })
+    .then((res) => {
+      this.props.handlePostFormOpen();
+    })
+    .catch((error) => console.log(error));
+  }
+
   render () {
     return (
-      <Modal show={this.props.loginModalOpen} onHide={this.props.handleLoginModalOpen}>
+      <Modal show={this.props.postFormOpen} onHide={this.props.handlePostFormOpen}>
         <Modal.Header closeButton>
           <Modal.Title>Create a Post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={this.handleSubmit} >
             <div className="form-group">
-              <select name="city">
+              <label htmlFor="city">City</label>
+              <select name="city" onChange={this.handleChange} value={this.state.city}>
                 <option value="London">London</option>
                 <option value="Sydney">Sydney</option>
                 <option value="San Francisco">San Francisco</option>
                 <option value="Gibraltar">Gibraltar</option>
               </select>
-              <label htmlFor="city">City</label>
-              <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="city" name="city" value={this.state.city} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="photo">Photo URL</label>
+              <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="photo" name="photo" value={this.state.photo} />
             </div>
             <div className="form-group">
               <label htmlFor="title">Title</label>
