@@ -48,7 +48,7 @@ class CitiesContainer extends Component {
                 {console.log(this.state.articleList)}
                 {console.log(this.state.cityList)}
                 {console.log(this.state.selectedCity)}
-                <CityView selectedCity={this.state.selectedCity}/>
+                <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList}/>
                 {this.state.selectedCity && this.state.articleList.map((article, index) => 
                     <Article article={article} index={index} />
                 )}
