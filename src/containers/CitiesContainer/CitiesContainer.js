@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import CityList from '../../components/CityList/CityList';
+import CityView from '../../components/CityView/CityView';
 import Article from '../../components/Article/Article';
 
 
@@ -56,7 +57,7 @@ class CitiesContainer extends Component {
                 <div className="article-list">
                 {console.log(this.state.articleList)}
                 {console.log(this.state.cityList)}
-
+                <CityView selectedCity={this.state.selectedCity}/>
                 {this.state.articleList.length && this.state.articleList.map((article, index) => 
                     <Article article={article} index={index} />
                 )}
