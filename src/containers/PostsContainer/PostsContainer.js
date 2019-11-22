@@ -9,13 +9,14 @@ class PostsContainer extends Component {
     posts: [],
   };
 
+  // `https://jsonplaceholder.typicode.com/posts`
   componentDidMount () {
-    // ${process.env.REACT_APP_API_URL}/posts/all
-    axios.get(`https://jsonplaceholder.typicode.com/posts`) // placeholder for posts api
+    
+    axios.get(`${process.env.REACT_APP_API_URL}/posts/all`) // placeholder for posts api
       .then(res => {
         console.log(res)
         this.setState({
-          posts: res.data
+          posts: res.data.data
         });
       })
       .catch(err => console.log(err));
