@@ -64,7 +64,7 @@ class Navbar extends React.Component {
         </div>
       </nav>
       <Login loginModalOpen={this.state.loginModalOpen} handleLoginModalOpen={this.handleLoginModalOpen} setCurrentUser={this.props.setCurrentUser} />
-      <Signup signupModalOpen={this.state.signupModalOpen} handleSignupModalOpen={this.handleSignupModalOpen} />
+      <Signup signupModalOpen={this.state.signupModalOpen} handleSignupModalOpen={this.handleSignupModalOpen} setCurrentUser={this.props.setCurrentUser} />
       </>
     )
   }
