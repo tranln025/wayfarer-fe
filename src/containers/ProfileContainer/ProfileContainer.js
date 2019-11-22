@@ -20,7 +20,7 @@ class ProfileContainer extends Component {
   componentDidMount() {
     const userId = localStorage.getItem('uid');
     console.log(userId)
-    axios.get(`${process.env.REACT_APP_API_URL}/users/${userId}`, {
+    axios.get(`${process.env.REACT_APP_API_URL}/users/findById/${userId}`, {
       withCredentials: true,
     })
       .then(res => {
