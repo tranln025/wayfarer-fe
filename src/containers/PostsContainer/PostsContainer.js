@@ -15,8 +15,11 @@ class PostsContainer extends Component {
     axios.get(`${process.env.REACT_APP_API_URL}/posts/all`) // placeholder for posts api
       .then(res => {
         console.log(res)
+        let filteredPosts = res.data.data.filter((post) => {
+          return post.author === this.props.currentUser
+        })
         this.setState({
-          posts: res.data.data
+          posts: filteredPosts
         });
       })
       .catch(err => console.log(err));
