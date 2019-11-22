@@ -5,7 +5,6 @@ import ProfileContainer from '../containers/ProfileContainer/ProfileContainer';
 // import City from '../components/City/City';
 import Post from '../components/Post/Post';
 import CitiesContainer from '../containers/CitiesContainer/CitiesContainer';
-import CityContainer from '../containers/CityContainer/CityContainer';
 
 import './Routes.css'
 
