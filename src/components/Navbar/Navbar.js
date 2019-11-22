@@ -53,10 +53,10 @@ class Navbar extends React.Component {
             <li className="nav-item">
               <a className="nav-link" onClick={this.handleSignupModalOpen}>Sign up</a>
             </li>
+           </> : <>
             <li className="nav-item">
               <a className="nav-link" onClick={this.handleProfileRedirect}>Profile</a>
             </li>
-           </> : <>
             <li className="nav-item">
               <a className="nav-link" onClick={this.props.logout}>Logout</a>
             </li>
