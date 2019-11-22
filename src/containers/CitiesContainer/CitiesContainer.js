@@ -17,7 +17,14 @@ class CitiesContainer extends Component {
         axios.get(`${process.env.REACT_APP_API_URL}/cities/all`).then((res)=>{
             console.log(res)
             this.setState({cityList: res.data.data})
+            this.getArticleList()
         }).catch((err)=>console.log(err));
+
+        // let cityName = this.props.match.params.name;
+        // let capitalizedName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
+        // this.setState({
+        //     selectedCity: capitalizedName,
+        // }, this.getArticleList())
     }
 
     handleSelect = (event) => {
@@ -29,7 +36,11 @@ class CitiesContainer extends Component {
     }
 
     getArticleList = () => {
-        axios.get(`${process.env.REACT_APP_API_URL}/posts/find?name=${this.state.selectedCity}`, {
+        let cityName = this.props.match.params.name;
+        let capitalizedName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
+        console.log("getting article list");
+        axios.get(`${process.env.REACT_APP_API_URL}/posts/find?name=${capitalizedName}`, {
+        // axios.get(`${process.env.REACT_APP_API_URL}/posts/find?name=${this.state.selectedCity}`, {
             withCredentials: true,
         }).then((res)=>{
             console.log(res)
@@ -39,7 +50,6 @@ class CitiesContainer extends Component {
 
     render () {
 
-
         return (
             <>
                 <h1>Cities Container</h1>
@@ -47,9 +57,8 @@ class CitiesContainer extends Component {
                 <div className="article-list">
                 {console.log(this.state.articleList)}
                 {console.log(this.state.cityList)}
-                {console.log(this.state.selectedCity)}
                 <CityView selectedCity={this.state.selectedCity}/>
-                {this.state.selectedCity && this.state.articleList.map((article, index) => 
+                {this.state.articleList.length && this.state.articleList.map((article, index) => 
                     <Article article={article} index={index} />
                 )}
                 </div>
