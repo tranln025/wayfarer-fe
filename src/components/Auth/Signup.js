@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-bootstrap/Modal';
+import { withRouter } from 'react-router';
 import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -25,7 +26,10 @@ class Signup extends Component {
     console.log(this.state);
     axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, this.state)
     .then((res) => {
-      console.log(res);
+      console.log("res >>>", res)
+      this.props.setCurrentUser(res.data.data);
+      this.props.history.push(`/users/${res.data.data}`);
+      this.props.handleSignupModalOpen();
     })
     .catch((error) => console.log(error)); 
   };
@@ -66,4 +70,4 @@ class Signup extends Component {
   }
 };
 
-export default Signup;
+export default withRouter(Signup);

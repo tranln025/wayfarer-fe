@@ -25,7 +25,7 @@ class App extends Component {
         console.log(res);
         localStorage.removeItem('uid');
         this.setState({ currentUser: null });
-        this.props.history.push('/login');
+        this.props.history.push('/');
       })
       .catch(err => console.log(err))
   }
