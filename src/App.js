@@ -20,10 +20,10 @@ class App extends Component {
   };
 
   logout = () => {
-    localStorage.removeItem('uid');
-    axios.post(`${process.env.REACT_APP_API_URL}/auth/logout`, { withCredentials: true })
+    axios.delete(`${process.env.REACT_APP_API_URL}/auth/logout`, { withCredentials: true })
       .then(res => {
         console.log(res);
+        localStorage.removeItem('uid');
         this.setState({ currentUser: null });
         this.props.history.push('/login');
       })
@@ -33,7 +33,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} />
+        <Navbar currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} logout={this.logout} />
         <Routes currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} />
       </div>
     );

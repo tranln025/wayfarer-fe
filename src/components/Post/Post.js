@@ -29,11 +29,11 @@ class Post extends Component {
     return(
       <div>
         <div className="hero">
-          <img src="https://www.usnews.com/dims4/USNEWS/3e2b4ba/2147483647/thumbnail/640x420/quality/85/?url=http%3A%2F%2Fcom-usnews-beam-media.s3.amazonaws.com%2Fbb%2Fc8%2F59c40cdd4cacbc74086e09589bff%2F1064-the-bay-lights-3-james-ewing.jpg" alt="hero"/>
+          <img src={this.state.post.photo} alt="hero"/>
         </div>
         <div className="post-info">
           <h2>{this.state.post.title}</h2>
-          <p>{this.state.post.body}</p>
+          <p>{this.state.post.content}</p>
           <h4>{this.state.author.username}</h4>
         </div>
       </div>
