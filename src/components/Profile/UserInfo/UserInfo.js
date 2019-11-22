@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-
+import React from 'react';
 
 import './UserInfo.css';
 
@@ -9,7 +8,7 @@ const UserInfo = (props) => {
       <div className="user-details">
         <h1>User details</h1>
         <div className="avatar-container">
-          <img id="avatar" src={props.profile.photo}></img>
+          <img id="avatar" src={props.profile.photo} alt="avatar"></img>
         </div>
         <h3>{props.profile.username}</h3>
         <p>email: {props.profile.email}</p>
