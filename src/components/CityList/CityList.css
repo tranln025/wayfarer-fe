@@ -1,0 +1,27 @@
+.citiesList {
+    width: 30%;
+}
+
+
+.flex-container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.city-selector {
+    height: 50px;
+    width: 300px;
+    border: 1px solid #bfbfbf;
+    background-color: #dedede;
+    border-radius: 3px;
+}
+
+.city-selector:hover{
+    background-color: #bfbfbf;
+}
+
+.selected {
+    background-color: red;
+}
