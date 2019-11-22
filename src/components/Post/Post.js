@@ -6,24 +6,26 @@ import axios from 'axios';
 class Post extends Component {
   state = {
     post: {},
+    author: {},
   };
 
   // axios.get(`https://jsonplaceholder.typicode.com/posts/${this.props.match.params.postId}`)
 
   
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_API_URL}/posts/${this.props.match.params}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/posts/${this.props.match.params.postId}`)
       .then((res)=> {
         console.log(res)
         this.setState({
-          post: res.data
+          post: res.data.data,
+          author: res.data.data.author
         });
       })
       .catch(err => console.log(err));
   };
     
   render() {
-
+    console.log(this.props.match.params.postId)
     return(
       <div>
         <div className="hero">
@@ -32,7 +34,7 @@ class Post extends Component {
         <div className="post-info">
           <h2>{this.state.post.title}</h2>
           <p>{this.state.post.body}</p>
-          <h4>Author</h4>
+          <h4>{this.state.author.username}</h4>
         </div>
       </div>
     )
