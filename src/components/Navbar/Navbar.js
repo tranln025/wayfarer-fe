@@ -45,6 +45,8 @@ class Navbar extends React.Component {
   
         <div className="collapse navbar-collapse" id="navbarsExample04">
           <ul className="navbar-nav ml-auto">
+          {!this.props.currentUser ?
+          <>
             <li className="nav-item">
               <a className="nav-link" onClick={this.handleLoginModalOpen}>Log in<span className="sr-only">(current)</span></a>
             </li>
@@ -54,9 +56,12 @@ class Navbar extends React.Component {
             <li className="nav-item">
               <a className="nav-link" onClick={this.handleProfileRedirect}>Profile</a>
             </li>
+           </> : <>
             <li className="nav-item">
               <a className="nav-link" onClick={this.props.logout}>Logout</a>
             </li>
+            </>
+          }
           </ul>
           <form className="form-inline my-2 my-md-0">
             <input className="form-control" type="text" placeholder="Search" />
