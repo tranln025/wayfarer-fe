@@ -1,6 +1,4 @@
-import React, {Component} from 'react';
-// import Tab from 'react-bootstrap/Table';
-import axios from 'axios';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -25,18 +23,6 @@ const CityList = (props) => {
                             ) 
                         })}
                     </ListGroup>
-
-                        {/* {props.cityList && props.cityList.map((city, index)=> {
-                            return (
-                                <Link to={"/cities/" + city.name.toLowerCase().split(' ').join('-')}>
-                                    <li>
-                                        {city.name}
-                                    </li>
-                                </Link>
-                            ) 
-                        })} */}
-
-                    <a href="/heaven">Link</a>
                 </div>
             </>
         )
