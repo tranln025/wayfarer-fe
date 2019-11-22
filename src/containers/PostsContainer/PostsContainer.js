@@ -11,7 +11,6 @@ class PostsContainer extends Component {
 
   // `https://jsonplaceholder.typicode.com/posts`
   componentDidMount () {
-    
     axios.get(`${process.env.REACT_APP_API_URL}/posts/all`) // placeholder for posts api
       .then(res => {
         console.log(res)

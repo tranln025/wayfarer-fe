@@ -75,7 +75,7 @@ class ProfileContainer extends Component {
           <EditUserInfo profile={this.state.profile} fileSelectedHanler={this.fileSelectedHanler} toggleEditMode={this.toggleEditMode} updateState={this.updateState} /> 
           : <UserInfo profile={this.state.profile} fileSelectedHanler={this.fileSelectedHanler} saveChanges={this.saveChanges} editMode={this.editMode}/>}
           {/* <UserInfo profile={this.state.profile} fileSelectedHanler={this.fileSelectedHanler} editMode={this.editMode}/> */}
-          <PostsContainer />
+          <PostsContainer currentUser={this.props.currentUser}/>
         </div>
       </div>
     );
