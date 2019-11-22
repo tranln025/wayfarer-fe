@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import CityList from '../../components/CityList/CityList';
-import { EventEmitter } from 'events';
+import CityView from '../../components/CityView/CityView';
 import Article from '../../components/Article/Article';
 
 
@@ -14,7 +14,7 @@ class CitiesContainer extends Component {
     }
 
     componentDidMount() {
-        axios.get(`${process.env.REACT_APP_API_URL}/cities`).then((res)=>{
+        axios.get(`${process.env.REACT_APP_API_URL}/cities/all`).then((res)=>{
             console.log(res)
             this.setState({cityList: res.data.data})
         }).catch((err)=>console.log(err));
@@ -47,7 +47,8 @@ class CitiesContainer extends Component {
                 <div className="article-list">
                 {console.log(this.state.articleList)}
                 {console.log(this.state.cityList)}
-
+                {console.log(this.state.selectedCity)}
+                <CityView selectedCity={this.state.selectedCity}/>
                 {this.state.selectedCity && this.state.articleList.map((article, index) => 
                     <Article article={article} index={index} />
                 )}
