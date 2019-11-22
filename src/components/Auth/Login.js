@@ -19,14 +19,11 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
     axios.post(`${process.env.REACT_APP_API_URL}/auth/login`,
     this.state, {
       withCredentials: true,
     })
     .then((res) => {
-      console.log("res.data.data >>>>", res.data.data);
-      console.log(`props>>>>>${this.props}`)
       this.props.setCurrentUser(res.data.data);
       this.props.history.push(`/users/${res.data.data}`);
       this.props.handleLoginModalOpen();
