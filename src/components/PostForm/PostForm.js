@@ -15,6 +15,12 @@ class PostForm extends Component {
     photo: '',
   };
 
+  componentDidMount = () => {
+    this.setState({
+      city: "5dd859347130e01abc89d996"
+    })
+  }
+
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -44,7 +50,7 @@ class PostForm extends Component {
             <div className="form-group">
               <label htmlFor="city">City</label>
               <select name="city" onChange={this.handleChange} value={this.state.city}>
-                <option value="London">London</option>
+                <option value="5dd859347130e01abc89d996">London</option>
                 <option value="Sydney">Sydney</option>
                 <option value="San Francisco">San Francisco</option>
                 <option value="Gibraltar">Gibraltar</option>
