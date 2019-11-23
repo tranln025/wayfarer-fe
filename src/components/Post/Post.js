@@ -23,6 +23,18 @@ class Post extends Component {
       })
       .catch(err => console.log(err));
   };
+ 
+  
+
+    deletePost = (event) => {
+      console.log(event.target);
+      axios.delete(`${process.env.REACT_APP_API_URL}/posts/${this.props.match.params.postId}`)
+        .then((res) => {
+          console.log("succesfully deleted post", res)
+        })
+        .catch(err => console.log(err));
+    }
+  
     
   render() {
     console.log(this.props.match.params.postId)
@@ -35,6 +47,9 @@ class Post extends Component {
           <h2>{this.state.post.title}</h2>
           <p>{this.state.post.content}</p>
           <h4>{this.state.author.username}</h4>
+          <div>
+            <button className='remove' onClick={(event) => {{this.deletePost()} ; {this.props.history.goBack()}} } >Remove</button>
+          </div>
         </div>
       </div>
     )
