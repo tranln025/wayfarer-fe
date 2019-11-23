@@ -11,6 +11,7 @@ class CitiesContainer extends Component {
         selectedCity: '',
         articleList: [],
         cityList: [],
+        thisCity: {}
     }
 
     componentDidMount() {
@@ -30,6 +31,7 @@ class CitiesContainer extends Component {
     handleSelect = (event) => {
         // event.preventDefault(); 
         console.log("changing selected city");
+        console.log(event.target)
         this.setState({
             selectedCity: event.target.name,
         }, function() {this.getArticleList()})
@@ -57,7 +59,7 @@ class CitiesContainer extends Component {
                 <div className="article-list">
                 {console.log(this.state.articleList)}
                 {console.log(this.state.cityList)}
-                {console.log(this.state.selectedCity)}
+                {console.log(this.state.thisCity)}
                 <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList}/>
                 {this.state.articleList.length && this.state.articleList.map((article, index) => 
                     <Article article={article} index={index} />
