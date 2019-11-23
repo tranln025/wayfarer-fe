@@ -72,9 +72,10 @@ class CitiesContainer extends Component {
                 <h1>Cities Container</h1>
                 {this.state.cityList && <CityList cityList={this.state.cityList} handleSelect={this.handleSelect} getArticleList={this.getArticleList}/>}
                 <div className="article-list">
-                {/* {console.log(this.state.articleList)}
-                {console.log(this.state.cityList)} */}
-                <CityView selectedCity={this.state.selectedCity}/>
+                {console.log(this.state.articleList)}
+                {console.log(this.state.cityList)}
+                {console.log(this.state.selectedCity)}
+                <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList}/>
                 {this.state.articleList.length && this.state.articleList.map((article, index) => 
                     <Article article={article} index={index} />
                 )}

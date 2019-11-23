@@ -9,9 +9,8 @@ class PostsContainer extends Component {
     posts: [],
   };
 
-  // `https://jsonplaceholder.typicode.com/posts`
   componentDidMount () {
-    axios.get(`${process.env.REACT_APP_API_URL}/posts/all`) // placeholder for posts api
+    axios.get(`${process.env.REACT_APP_API_URL}/posts/all`)
       .then(res => {
         console.log(res)
         let filteredPosts = res.data.data.filter((post) => {

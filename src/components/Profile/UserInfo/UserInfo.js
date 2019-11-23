@@ -13,7 +13,7 @@ const UserInfo = (props) => {
         <h3>{props.profile.username}</h3>
         <p>email: {props.profile.email}</p>
         <p>Current city: {props.profile.currentCity}</p>
-        <button name="edit-ptofile" onClick={props.editMode}>Edit</button>
+        <button name="edit-profile" onClick={props.editMode}>Edit</button>
       </div>
     )
   }
