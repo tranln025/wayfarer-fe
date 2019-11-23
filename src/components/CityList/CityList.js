@@ -8,14 +8,20 @@ const CityList = (props) => {
 
 
         return (
-            <>
+            <div className="citiesList-container"> 
                 <div className="citiesList">
+                    <h3>Cities</h3>
                     <ListGroup>
                         {props.cityList && props.cityList.map((city, index)=> {
                             return (
                                 <Link to={"/cities/" + city.name.toLowerCase().split(' ').join('-')}>
-                                    <ListGroup.Item variant="secondary" action href={"/cities/" + city.name.toLowerCase().split(' ').join('-')} name={city.name} onClick={props.handleSelect}>
-                                        {city.name}
+                                    <ListGroup.Item className="list-item" variant="secondary" action href={"/cities/" + city.name.toLowerCase().split(' ').join('-')} name={city.name} onClick={props.handleSelect}>
+                                        <div className="city-container">
+                                            <div className="city-photo-container">
+                                                <img src={city.photo} />
+                                            </div>
+                                            <p>{city.name}</p>
+                                        </div>
                                     </ListGroup.Item>
                                 </Link>
                                 
@@ -24,7 +30,7 @@ const CityList = (props) => {
                         })}
                     </ListGroup>
                 </div>
-            </>
+            </div>
         )
     
 }

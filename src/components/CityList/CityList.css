@@ -1,7 +1,22 @@
 .citiesList {
-    width: 30%;
+    width: 100%;
 }
 
+.citiesList h3 {
+    color: whitesmoke;
+}
+
+.list-item {
+    margin: 10px 0px;
+    border-radius: 50px;
+}
+
+.citiesList-container {
+    padding: 10px;
+    margin: 20px 10px;
+    background-color: #363636;
+    display: inline-block;
+}
 
 .flex-container {
     width: 30%;
@@ -10,18 +25,32 @@
     height: 100%;
 }
 
-.city-selector {
-    height: 50px;
-    width: 300px;
-    border: 1px solid #bfbfbf;
-    background-color: #dedede;
-    border-radius: 3px;
+.city-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
 }
 
-.city-selector:hover{
-    background-color: #bfbfbf;
+
+.city-photo-container {
+    width: 80px;
+    height: 60px;
+    overflow: hidden;
+    text-align: center;
+    display: inline-block;
+}
+   
+.city-photo-container img {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    object-fit: cover;
+    align-content: center;
+    /* margin-top: 10px; */
 }
 
-.selected {
-    background-color: red;
+.city-container p {
+    margin: 12px 20px;
+    font-size: 25px;
 }

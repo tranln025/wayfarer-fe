@@ -1,0 +1,54 @@
+.post-preview-container {
+    width: 60%;
+    text-align: left;
+    padding: 15px;
+    margin: 10px 0;
+    border: 2px solid #e3e3e3;
+    border-radius: 15px;
+}
+
+.post-preview-flex-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    text-decoration: none;
+
+
+}
+.post-preview-container img{
+    width: 150px;
+    height: 150px;
+}
+
+
+.avatar-container-post-preview {
+    width: 150px;
+    height: 150;
+    overflow: hidden;
+    text-align: center;
+    display: inline-block;
+   }
+   
+.avatar-container-post-preview img {
+     height: 100%;
+     width: 100%;
+     position: relative;
+     text-align: center;
+     object-fit: cover;
+     align-content: center;
+   }
+
+.post-preview-info {
+    width: 70%;
+    margin: 0px 20px;
+}
+
+.post-preview-info h4{
+    color: #363636;
+}
+.post-preview-info p {
+    font-size: 14px;
+    line-height: normal;  
+    color: #4d4d4d;  
+}
+
