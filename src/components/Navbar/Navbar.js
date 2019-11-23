@@ -5,10 +5,6 @@ import { withRouter } from "react-router";
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 
-import PostForm from './../PostForm/PostForm';
-
-// NOTE: PostForm Modal here only temporarily until citycontainer can take it
-
 class Navbar extends React.Component {
   state = {
     loginModalOpen: false,
