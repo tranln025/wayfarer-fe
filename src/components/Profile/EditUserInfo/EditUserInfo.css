@@ -21,4 +21,14 @@
     text-align: center;
     object-fit: cover;
     align-content: center;
+    border-radius: 10px;
   }
+
+form input {
+  text-align: center;
+  margin: auto;
+}
+
+#add-file {
+  margin: 0px 0px 20px 90px;
+}

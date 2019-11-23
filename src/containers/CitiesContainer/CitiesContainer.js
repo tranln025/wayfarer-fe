@@ -24,13 +24,11 @@ class CitiesContainer extends Component {
     }
 
     refreshPage = () => {
-        // this.setState({reloadPage: true});
-        console.log("reloading the page");
+        console.log("reloading articles");
         this.getArticleList();
     }
 
     handleSelect = (event) => {
-        // event.preventDefault(); 
         console.log("changing selected city");
         this.setState({
             selectedCity: event.target.name,
