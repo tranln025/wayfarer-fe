@@ -19,11 +19,11 @@ const Article = (props) => {
 
     return(
         <div>
-            <h3>{props.article.title}</h3>
+            {/* <h3>{props.article.title}</h3> */}
             {/* <p>{props.article.author}</p> */}
-            <p>{props.article.author.username}</p>
+            {/* <p>{props.article.author.username}</p>
             <p>{props.article.postDate}</p>
-            <p>{props.article.content}</p>
+            <p>{props.article.content}</p> */}
         </div>
     )
 }
