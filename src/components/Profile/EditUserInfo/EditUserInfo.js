@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import firebase from '../../../firebase';
-
+import Button from 'react-bootstrap/Button';
 
 import './EditUserInfo.css';
 
@@ -76,14 +76,14 @@ class EditUserInfo extends Component {
 
         return (
         <div className="user-details">
-            <h1>User details</h1>
+            {/* <h1>User details</h1> */}
             <form onSubmit={this.props.saveChanges}>
                 <div className="avatar-container">
 
                 <img id="avatar" src={this.props.profile.photo} alt="avatar"></img>
 
                 </div>
-                <input type="file" onChange={ (e) => this.fileSelectedHanler(e.target.files) } />
+                <input id="add-file" type="file" onChange={ (e) => this.fileSelectedHanler(e.target.files) } />
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input onChange={this.handleChange} className="form-control form-control-lg" type="text" name="username" value={this.state.username} />
@@ -97,7 +97,9 @@ class EditUserInfo extends Component {
                     <input onChange={this.handleChange} className="form-control form-control-lg" type="text" name="currentCity" value={this.state.currentCity} />
                 </div>
                 
-                <button name="save-ptofile" onClick={this.saveChanges}>Save</button>
+                {/* <button name="save-ptofile" onClick={this.saveChanges}>Save</button> */}
+                <Button name="save-ptofile" onClick={this.saveChanges} variant="outline-secondary">Save</Button>
+
             </form>
 
         </div>

@@ -33,6 +33,10 @@ class Navbar extends React.Component {
     this.props.history.push(`/users/${userId}`);
   }
 
+  handleCitiesRedirect = () => {
+    this.props.history.push(`/cities`);
+  }
+
   render () {
     return (
       <>
@@ -53,6 +57,9 @@ class Navbar extends React.Component {
               <a className="nav-link" onClick={this.handleSignupModalOpen}>Sign up</a>
             </li>
             </> : <>
+            <li className="nav-item">
+              <a className="nav-link" onClick={this.handleCitiesRedirect}>Cities</a>
+            </li>
             <li className="nav-item">
               <a className="nav-link" onClick={this.handleProfileRedirect}>Profile</a>
             </li>

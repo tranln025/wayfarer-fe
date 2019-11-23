@@ -14,7 +14,7 @@ const CityList = (props) => {
                     <ListGroup>
                         {props.cityList && props.cityList.map((city, index)=> {
                             return (
-                                <Link to={"/cities/" + city.name.toLowerCase().split(' ').join('-')}>
+                                <Link  style={{ textDecoration: 'none' }} to={"/cities/" + city.name.toLowerCase().split(' ').join('-')}>
                                     <ListGroup.Item className="list-item" variant="secondary" action href={"/cities/" + city.name.toLowerCase().split(' ').join('-')} name={city.name} onClick={props.handleSelect}>
                                         <div className="city-container">
                                             <div className="city-photo-container">

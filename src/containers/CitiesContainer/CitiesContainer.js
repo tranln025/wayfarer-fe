@@ -23,8 +23,12 @@ class CitiesContainer extends Component {
         }).catch((err)=>console.log(err));
     }
 
+    refreshPage = () => {
+        console.log("reloading articles");
+        this.getArticleList();
+    }
+
     handleSelect = (event) => {
-        // event.preventDefault(); 
         console.log("changing selected city");
         this.setState({
             selectedCity: event.target.name,
@@ -62,7 +66,7 @@ class CitiesContainer extends Component {
             <>
                 {this.state.cityList && <CityList cityList={this.state.cityList} handleSelect={this.handleSelect} getArticleList={this.getArticleList}/>}
                 <div className="article-list">
-                <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList}/>
+                <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList} refreshPage={this.refreshPage}/>
                 {this.state.articleList.length && this.state.articleList.map((article, index) => 
                     // <Article article={article} index={index} />
                     <PostPreview article={article} index={index} />
