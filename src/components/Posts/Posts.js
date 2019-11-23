@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const Posts = (props) => {
   console.log("props.posts.data>>>> ", props.posts);
 
+
   const posts = props.posts.map(post => {
     
     return (
