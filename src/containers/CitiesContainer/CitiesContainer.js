@@ -3,6 +3,7 @@ import axios from 'axios';
 import CityList from '../../components/CityList/CityList';
 import CityView from '../../components/CityView/CityView';
 import Article from '../../components/Article/Article';
+import PostPreview from '../../components/PostPreview/PostPreview';
 
 
 class CitiesContainer extends Component {
@@ -19,14 +20,7 @@ class CitiesContainer extends Component {
             console.log(res)
             this.setState({cityList: res.data.data})
             this.getArticleList()
-            
         }).catch((err)=>console.log(err));
-
-        // let cityName = this.props.match.params.name;
-        // let capitalizedName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
-        // this.setState({
-        //     selectedCity: capitalizedName,
-        // }, this.getArticleList())
     }
 
     handleSelect = (event) => {
@@ -51,7 +45,6 @@ class CitiesContainer extends Component {
         }
         console.log("getting article list");
         axios.get(`${process.env.REACT_APP_API_URL}/posts/find?name=${capitalizedName}`, {
-        // axios.get(`${process.env.REACT_APP_API_URL}/posts/find?name=${this.state.selectedCity}`, {
             withCredentials: true,
         }).then((res)=>{
             console.log(res)
@@ -67,17 +60,12 @@ class CitiesContainer extends Component {
 
         return (
             <>
-                {/* {console.log(this.state.cityList.filter(obj => {return obj.name === this.state.selectedCity})[0])} */}
-                {console.log(this.state.selectedCityObject)}
-                <h1>Cities Container</h1>
                 {this.state.cityList && <CityList cityList={this.state.cityList} handleSelect={this.handleSelect} getArticleList={this.getArticleList}/>}
                 <div className="article-list">
-                {console.log(this.state.articleList)}
-                {console.log(this.state.cityList)}
-                {console.log(this.state.selectedCity)}
                 <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList}/>
                 {this.state.articleList.length && this.state.articleList.map((article, index) => 
-                    <Article article={article} index={index} />
+                    // <Article article={article} index={index} />
+                    <PostPreview article={article} index={index} />
                 )}
                 </div>
             </>
