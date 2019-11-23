@@ -11,7 +11,7 @@ class CitiesContainer extends Component {
         selectedCity: '',
         articleList: [],
         cityList: [],
-        thisCity: {}
+        selectedCityObject: {},
     }
 
     componentDidMount() {
@@ -19,6 +19,7 @@ class CitiesContainer extends Component {
             console.log(res)
             this.setState({cityList: res.data.data})
             this.getArticleList()
+            
         }).catch((err)=>console.log(err));
 
         // let cityName = this.props.match.params.name;
@@ -39,28 +40,43 @@ class CitiesContainer extends Component {
 
     getArticleList = () => {
         let cityName = this.props.match.params.name;
-        let capitalizedName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
+        let capitalizedName = '';
+        if (cityName.split('-').length > 1) {
+            let capitalizedNameList = [];
+            cityName.split('-').forEach((word) => { 
+                capitalizedNameList.push(word.charAt(0).toUpperCase() + word.slice(1));
+            })
+            capitalizedName = capitalizedNameList.join(' ');
+        } else {
+            capitalizedName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
+        }
         console.log("getting article list");
         axios.get(`${process.env.REACT_APP_API_URL}/posts/find?name=${capitalizedName}`, {
         // axios.get(`${process.env.REACT_APP_API_URL}/posts/find?name=${this.state.selectedCity}`, {
             withCredentials: true,
         }).then((res)=>{
             console.log(res)
-            this.setState({articleList: res.data.data})
+            this.setState({articleList: res.data.data.sort((a, b) => (a.postDate < b.postDate) ? 1 : -1)})
         }).catch((err)=>console.log(err));
+        let cityObject = this.state.cityList.filter(obj => {return obj.name === this.state.selectedCity})[0]
+            this.setState({
+                selectedCityObject: cityObject,
+            })
     }
 
     render () {
 
         return (
             <>
+                {/* {console.log(this.state.cityList.filter(obj => {return obj.name === this.state.selectedCity})[0])} */}
+                {console.log(this.state.selectedCityObject)}
                 <h1>Cities Container</h1>
                 {this.state.cityList && <CityList cityList={this.state.cityList} handleSelect={this.handleSelect} getArticleList={this.getArticleList}/>}
                 <div className="article-list">
                 {console.log(this.state.articleList)}
                 {console.log(this.state.cityList)}
                 {console.log(this.state.thisCity)}
-                <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList}/>
+                <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList} selectedCityObject={this.state.selectedCityObject} />
                 {this.state.articleList.length && this.state.articleList.map((article, index) => 
                     <Article article={article} index={index} />
                 )}
