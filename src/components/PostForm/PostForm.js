@@ -42,14 +42,12 @@ class PostForm extends Component {
   componentDidMount() {
     axios.get(`${process.env.REACT_APP_API_URL}/cities/all`)
       .then((res) => {
-        console.log("CITIES: res.data.data>>>>>>> ", res.data.data); // array of cities
         const cities = res.data.data.map(city => {
           return {
             value: city._id, 
             display: city.name
           };
         });
-        console.log("cities >>>>>>> ", cities); // still array of cities
         this.setState({
           cities: [{
             value: '',
@@ -85,7 +83,7 @@ class PostForm extends Component {
             </div>
             <div className="form-group">
               <label htmlFor="content">How was your trip?</label>
-              <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="content" name="content" value={this.state.content} />
+              <textarea onChange={this.handleChange} className="form-control form-control-lg" type="text" id="content" name="content" value={this.state.content} />
             </div>
             <button className="btn btn-primary float-right" type="submit">Post</button>
           </form>

@@ -4,7 +4,7 @@ import CityList from '../../components/CityList/CityList';
 import CityView from '../../components/CityView/CityView';
 import Article from '../../components/Article/Article';
 import PostPreview from '../../components/PostPreview/PostPreview';
-
+import './CitiesContainer.css';
 
 class CitiesContainer extends Component {
 
