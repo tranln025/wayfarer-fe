@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import './Post.css';
+import DeleteConfirmation from './DeleteConfirmation/DeleteConfirmation';
 import axios from 'axios';
 
 class Post extends Component {
   state = {
     post: {},
     author: {},
+    deleteModalOpen: false,
   };
   
   componentDidMount() {
@@ -20,19 +22,16 @@ class Post extends Component {
       })
       .catch(err => console.log(err));
   };
-  
-  deletePost = (event) => {
-    console.log(event.target);
-    axios.delete(`${process.env.REACT_APP_API_URL}/posts/${this.props.match.params.postId}`)
-      .then((res) => {
-        console.log("succesfully deleted post", res);
-        this.props.history.goBack()
-      })
-      .catch(err => console.log(err));
-  }
+
+  handleDeleteModalOpen = () => {
+    this.setState((prevState) => {
+      return {
+        deleteModalOpen: !prevState.deleteModalOpen
+      };
+    });
+  };
   
   render() {
-    console.log(this.props.match.params.postId)
     return(
       <div>
         <div className="hero">
@@ -43,9 +42,10 @@ class Post extends Component {
           <p>{this.state.post.content}</p>
           <h4>{this.state.author.username}</h4>
           <div>
-            <button className='remove' onClick={this.deletePost}>Delete</button>
+            <button className='remove' onClick={this.handleDeleteModalOpen}>Delete</button>
           </div>
         </div>
+        <DeleteConfirmation deleteModalOpen={this.state.deleteModalOpen} handleDeleteModalOpen={this.handleDeleteModalOpen} postTitle={this.state.post.title} />
       </div>
     )
   };
