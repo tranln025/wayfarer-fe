@@ -12,7 +12,7 @@ class PostForm extends Component {
     content: '',
     photo: '',
     cities: [],
-    selectedCity: "",
+    city: "",
   };
 
   handleChange = (e) => {
@@ -23,7 +23,7 @@ class PostForm extends Component {
 
   handleCitySelect = (e) => {
     this.setState({
-      selectedCity: e.target.value,
+      city: e.target.value,
     })
   }
 
