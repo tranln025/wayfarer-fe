@@ -6,26 +6,26 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 //handlemodalopen from citycontainer
 
-
 class PostForm extends Component {
   state = {
-    city: '',
     title: '',
     content: '',
     photo: '',
+    cities: [],
+    selectedCity: "",
   };
 
-  componentDidMount = () => {
+  handleChange = (e) => {
     this.setState({
-      city: "5dd859347130e01abc89d996"
-    })
-  }
-
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
+      [e.target.name]: e.target.value,
     });
   };
+
+  handleCitySelect = (e) => {
+    this.setState({
+      selectedCity: e.target.value,
+    })
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -39,6 +39,28 @@ class PostForm extends Component {
     .catch((error) => console.log(error));
   }
 
+  componentDidMount() {
+    axios.get(`${process.env.REACT_APP_API_URL}/cities/all`)
+      .then((res) => {
+        console.log("CITIES: res.data.data>>>>>>> ", res.data.data); // array of cities
+        const cities = res.data.data.map(city => {
+          return {
+            value: city._id, 
+            display: city.name
+          };
+        });
+        console.log("cities >>>>>>> ", cities); // still array of cities
+        this.setState({
+          cities: [{
+            value: '',
+            display: 'Select a city'
+          }]
+          .concat(cities)
+        });
+      })
+      .catch((error) => console.log(error));
+  }
+
   render () {
     return (
       <Modal show={this.props.postFormOpen} onHide={this.props.handlePostFormOpen}>
@@ -49,11 +71,8 @@ class PostForm extends Component {
           <form onSubmit={this.handleSubmit} >
             <div className="form-group">
               <label htmlFor="city">City</label>
-              <select name="city" onChange={this.handleChange} value={this.state.city}>
-                <option value="5dd859347130e01abc89d996">London</option>
-                <option value="Sydney">Sydney</option>
-                <option value="San Francisco">San Francisco</option>
-                <option value="Gibraltar">Gibraltar</option>
+              <select className="form-control form-control-lg" name="city" onChange={this.handleCitySelect} value={this.state.selectedCity}>
+                {this.state.cities.map((city) => <option key={city.value} value={city.value}>{city.display}</option>)}
               </select>
             </div>
             <div className="form-group">
