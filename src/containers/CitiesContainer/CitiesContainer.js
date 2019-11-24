@@ -4,7 +4,7 @@ import CityList from '../../components/CityList/CityList';
 import CityView from '../../components/CityView/CityView';
 import Article from '../../components/Article/Article';
 import PostPreview from '../../components/PostPreview/PostPreview';
-
+import './CitiesContainer.css';
 
 class CitiesContainer extends Component {
 
@@ -23,8 +23,12 @@ class CitiesContainer extends Component {
         }).catch((err)=>console.log(err));
     }
 
+    refreshPage = () => {
+        console.log("reloading articles");
+        this.getArticleList();
+    }
+
     handleSelect = (event) => {
-        // event.preventDefault(); 
         console.log("changing selected city");
         console.log(event.target)
         this.setState({
@@ -63,10 +67,7 @@ class CitiesContainer extends Component {
             <>
                 {this.state.cityList && <CityList cityList={this.state.cityList} handleSelect={this.handleSelect} getArticleList={this.getArticleList}/>}
                 <div className="article-list">
-                {console.log(this.state.articleList)}
-                {console.log(this.state.cityList)}
-                {console.log(this.state.thisCity)}
-                <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList} selectedCityObject={this.state.selectedCityObject} />
+                <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList} refreshPage={this.refreshPage} selectedCityObject={this.state.selectedCityObject}/>
                 {this.state.articleList.length && this.state.articleList.map((article, index) => 
                     // <Article article={article} index={index} />
                     <PostPreview article={article} index={index} />

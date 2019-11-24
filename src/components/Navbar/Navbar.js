@@ -5,15 +5,10 @@ import { withRouter } from "react-router";
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 
-import PostForm from './../PostForm/PostForm';
-
-// NOTE: PostForm Modal here only temporarily until citycontainer can take it
-
 class Navbar extends React.Component {
   state = {
     loginModalOpen: false,
     signupModalOpen: false,
-    postFormOpen: false
   }
 
   // Source for modal handling: https://stackoverflow.com/questions/56960664/how-to-make-popup-modal-appear-when-clicking-a-link
@@ -33,21 +28,16 @@ class Navbar extends React.Component {
     });
   };
 
-  handlePostFormOpen = () => {
-    this.setState((prevState) => {
-      return {
-        postFormOpen: !prevState.postFormOpen
-      }
-    });
-  };
-
   handleProfileRedirect = () => {
     const userId = localStorage.getItem('uid');
     this.props.history.push(`/users/${userId}`);
   }
 
+  handleCitiesRedirect = () => {
+    this.props.history.push(`/cities`);
+  }
+
   render () {
-    console.log(this.props)
     return (
       <>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark">
@@ -66,12 +56,12 @@ class Navbar extends React.Component {
             <li className="nav-item">
               <a className="nav-link" onClick={this.handleSignupModalOpen}>Sign up</a>
             </li>
-           </> : <>
+            </> : <>
             <li className="nav-item">
-              <a className="nav-link" onClick={this.handleProfileRedirect}>Profile</a>
+              <a className="nav-link" onClick={this.handleCitiesRedirect}>Cities</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" onClick={this.handlePostFormOpen}>PostForm</a>
+              <a className="nav-link" onClick={this.handleProfileRedirect}>Profile</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" onClick={this.props.logout}>Logout</a>
@@ -86,7 +76,6 @@ class Navbar extends React.Component {
       </nav>
       <Login loginModalOpen={this.state.loginModalOpen} handleLoginModalOpen={this.handleLoginModalOpen} setCurrentUser={this.props.setCurrentUser} />
       <Signup signupModalOpen={this.state.signupModalOpen} handleSignupModalOpen={this.handleSignupModalOpen} setCurrentUser={this.props.setCurrentUser} />
-      <PostForm postFormOpen={this.state.postFormOpen} handlePostFormOpen={this.handlePostFormOpen} setCurrentUser={this.props.setCurrentUser} />
       </>
     )
   }

@@ -6,20 +6,26 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 //handlemodalopen from citycontainer
 
-
 class PostForm extends Component {
   state = {
-    city: '',
     title: '',
     content: '',
     photo: '',
+    cities: [],
+    city: "",
   };
 
-  handleChange = (event) => {
+  handleChange = (e) => {
     this.setState({
-      [event.target.name]: event.target.value,
+      [e.target.name]: e.target.value,
     });
   };
+
+  handleCitySelect = (e) => {
+    this.setState({
+      city: e.target.value,
+    })
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -33,6 +39,26 @@ class PostForm extends Component {
     .catch((error) => console.log(error));
   }
 
+  componentDidMount() {
+    axios.get(`${process.env.REACT_APP_API_URL}/cities/all`)
+      .then((res) => {
+        const cities = res.data.data.map(city => {
+          return {
+            value: city._id, 
+            display: city.name
+          };
+        });
+        this.setState({
+          cities: [{
+            value: '',
+            display: 'Select a city'
+          }]
+          .concat(cities)
+        });
+      })
+      .catch((error) => console.log(error));
+  }
+
   render () {
     return (
       <Modal show={this.props.postFormOpen} onHide={this.props.handlePostFormOpen}>
@@ -43,11 +69,8 @@ class PostForm extends Component {
           <form onSubmit={this.handleSubmit} >
             <div className="form-group">
               <label htmlFor="city">City</label>
-              <select name="city" onChange={this.handleChange} value={this.state.city}>
-                <option value="London">London</option>
-                <option value="Sydney">Sydney</option>
-                <option value="San Francisco">San Francisco</option>
-                <option value="Gibraltar">Gibraltar</option>
+              <select className="form-control form-control-lg" name="city" onChange={this.handleCitySelect} value={this.state.selectedCity}>
+                {this.state.cities.map((city) => <option key={city.value} value={city.value}>{city.display}</option>)}
               </select>
             </div>
             <div className="form-group">
@@ -60,7 +83,7 @@ class PostForm extends Component {
             </div>
             <div className="form-group">
               <label htmlFor="content">How was your trip?</label>
-              <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="content" name="content" value={this.state.content} />
+              <textarea onChange={this.handleChange} className="form-control form-control-lg" type="text" id="content" name="content" value={this.state.content} />
             </div>
             <button className="btn btn-primary float-right" type="submit">Post</button>
           </form>
