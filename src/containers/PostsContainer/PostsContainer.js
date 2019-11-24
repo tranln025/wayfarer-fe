@@ -23,6 +23,18 @@ class PostsContainer extends Component {
       .catch(err => console.log(err));
   };
 
+
+
+    // deletePost = (post) => {
+    //   axios.get(`${process.env.REACT_APP_API_URL}/posts/${postId}`)
+    //     .then((res) => {
+    //     let post = this.state.posts.filter((post) => {
+    //       return post._id !== res.data._id;
+    //     });
+    //     this.setState({post});
+    //   });
+    // };
+
   render () {
     return (
       <div className="posts-container">
