@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Posts = (props) => {
   console.log("props.posts>>>> ", props.posts); // []
+  console.log("halp>>>> ", props.posts.author)
 
   const posts = props.posts.map(post => {
     return (
