@@ -10,30 +10,17 @@ class PostsContainer extends Component {
   };
 
   componentDidMount () {
-    axios.get(`${process.env.REACT_APP_API_URL}/posts/all`)
-      .then(res => {
-        console.log(res)
-        let filteredPosts = res.data.data.filter((post) => {
-          return post.author === this.props.currentUser
-        })
-        this.setState({
-          posts: filteredPosts
-        });
+    axios.get(`${process.env.REACT_APP_API_URL}/posts/all`, {
+      withCredentials: true,
+    })
+    .then(res => {
+      let filteredPosts = res.data.data.filter((post) => post.author._id === this.props.currentUser);
+      this.setState({
+        posts: filteredPosts.sort((a, b) => (a.postDate < b.postDate) ? 1 : -1)
       })
-      .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
   };
-
-
-
-    // deletePost = (post) => {
-    //   axios.get(`${process.env.REACT_APP_API_URL}/posts/${postId}`)
-    //     .then((res) => {
-    //     let post = this.state.posts.filter((post) => {
-    //       return post._id !== res.data._id;
-    //     });
-    //     this.setState({post});
-    //   });
-    // };
 
   render () {
     return (

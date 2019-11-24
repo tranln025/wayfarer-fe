@@ -25,15 +25,15 @@ class DeleteConfirmation extends Component {
     return (
       <Modal show={this.props.deleteModalOpen} onHide={this.props.handleDeleteModalOpen}>
         <Modal.Header closeButton>
-          <Modal.Title>Are you sure you want to delete {this.props.postTitle}?</Modal.Title>
+          <Modal.Title>Are you sure you want to delete "{this.props.postTitle}"?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <button onClick={this.handleCancel} type="button" className="btn btn-dark">Cancel</button>
           <button onClick={this.handleDelete} type="button" className="btn btn-danger">Yes</button>
         </Modal.Body>
       </Modal>
-    )
-  }
-}
+    );
+  };
+};
 
 export default withRouter(DeleteConfirmation);
