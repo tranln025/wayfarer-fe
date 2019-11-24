@@ -45,19 +45,19 @@ class Signup extends Component {
         <Modal.Body>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label htmlFor="name">username</label>
+              <label htmlFor="username">username</label>
               <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="username" name="username" value={this.state.username} />
             </div>
             <div className="form-group">
-              <label htmlFor="name">Email</label>
+              <label htmlFor="email">Email</label>
               <input onChange={this.handleChange} className="form-control form-control-lg" type="email" id="email" name="email" value={this.state.email} />
             </div>
             <div className="form-group">
-              <label htmlFor="name">Current City</label>
+              <label htmlFor="currentCity">Current City</label>
               <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="currentCity" name="currentCity" value={this.state.currentCity} />
             </div>
             <div className="form-group">
-              <label htmlFor="name">Password</label>
+              <label htmlFor="password">Password</label>
               <input onChange={this.handleChange} className="form-control form-control-lg" type="password" id="password" name="password" value={this.state.password} />
             </div>
             <div className="form-group">
