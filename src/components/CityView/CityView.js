@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
-import Article from '../Article/Article';
 import PostForm from '../PostForm/PostForm';
+import PostPreview from '../../components/PostPreview/PostPreview';
+
+
+import './CityView.css';
 
 class CityView extends Component {
     state = {
@@ -13,18 +16,25 @@ class CityView extends Component {
                 postFormOpen: !prevState.postFormOpen
             }
         });
+        console.log('lahseiufbh')
         this.props.refreshPage();
-
     };
 
     render() {
         return (
-            <div>
-                <h1>{this.props.selectedCity}</h1>
-                <Article />
-                <a onClick={this.handlePostFormOpen} className="add-post-btn btn"><i class="fas fa-plus-circle fa-2x"></i></a>
-                <PostForm postFormOpen={this.state.postFormOpen} handlePostFormOpen={this.handlePostFormOpen} currentUser={this.props.currentUser} />
-            </div>
+            <>
+                <div className="city-page row">
+                    <div className="city-info">
+                        <h2>{this.props.selectedCityObject && this.props.selectedCityObject.name}</h2>
+                        <h5>{this.props.selectedCityObject && this.props.selectedCityObject.country}</h5>
+                    </div>
+                    <div className="city-img-container">
+                        <img className="city-img" src={this.props.selectedCityObject && this.props.selectedCityObject.photo} alt={this.props.selectedCityObject && this.props.selectedCityObject.name}/>
+                        <a onClick={this.handlePostFormOpen} className="add-post-btn btn"><i className="fas fa-plus-circle fa-2x"></i></a>
+                    </div>
+                    <PostForm postFormOpen={this.state.postFormOpen} handlePostFormOpen={this.handlePostFormOpen} currentUser={this.props.currentUser} />
+                </div>
+            </>
         )
     }
 }
