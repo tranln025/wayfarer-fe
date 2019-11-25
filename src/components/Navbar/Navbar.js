@@ -4,6 +4,7 @@ import { withRouter } from "react-router";
 
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
+import './Navbar.css';
 
 import './Navbar.css';
 
@@ -53,10 +54,10 @@ class Navbar extends React.Component {
           {!this.props.currentUser ?
           <>
             <li className="nav-item">
-              <a className="nav-link" onClick={this.handleLoginModalOpen}>Log in<span className="sr-only">(current)</span></a>
+              <button type="button" className="btn btn-outline-light nav-link" onClick={this.handleLoginModalOpen}>Log in<span className="sr-only">(current)</span></button>
             </li>
             <li className="nav-item">
-              <a className="nav-link" onClick={this.handleSignupModalOpen}>Sign up</a>
+              <button type="button" className="btn btn-outline-light nav-link nav-link" onClick={this.handleSignupModalOpen}>Sign up</button>
             </li>
             </> : <>
             <li className="nav-item">

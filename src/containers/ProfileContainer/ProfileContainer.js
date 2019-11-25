@@ -6,7 +6,6 @@ import EditUserInfo from '../../components/Profile/EditUserInfo/EditUserInfo'
 import PostsContainer from '../PostsContainer/PostsContainer';
 import firebase from '../../firebase';
 
-
 import './ProfileContainer.css'
 
 class ProfileContainer extends Component {
@@ -24,7 +23,6 @@ class ProfileContainer extends Component {
       withCredentials: true,
     })
       .then(res => {
-        console.log('res.data>>>>>>>>>', res.data);
         this.setState({
           profile: res.data.data,
         });
@@ -32,51 +30,44 @@ class ProfileContainer extends Component {
       .catch(err => console.log(err));
   };
 
-  fileSelectedHanler = (photo) => {
+  fileSelectedHandler = (photo) => {
     this.setState({
-        selectedFile: photo[0]
+      selectedFile: photo[0]
     }, function() {
-      console.log(photo[0]);
-        this.state.storageref.child(`/images/user-${localStorage.getItem('uid')}`).put(this.state.selectedFile, {contentType: 'image/jpeg'}).then(snap => {
-          snap.ref.getDownloadURL().then(url => {
-              console.log(url);
-              this.setState({profile: {
-                photo: url,
-              }});
-          })
-      })
-    })
-  }
-
-  // toggleEditMode = () => {
-  //   console.log("toggle edit");
-  //   this.setState(prevState => ({
-  //     edit: !prevState.edit,
-  //   }))
-  // }
+      this.state.storageref.child(`/images/user-${localStorage.getItem('uid')}`).put(this.state.selectedFile, {contentType: 'image/jpeg'}).then(snap => {
+        snap.ref.getDownloadURL().then(url => {
+          console.log(url);
+          this.setState({profile: {
+            photo: url,
+          }});
+        });
+      });
+    });
+  };
 
   editMode = () => {
-    console.log("edit mode");
     this.setState({edit: true})
-  }
+  };
 
   updateState = (updatedProfile) => {
     this.setState({profile: updatedProfile});
     this.setState({edit: false});
-  }
-
-  
+  };
 
   render() {
     return (
       <div>
-        <h1>Profile Container</h1>
+        <h1>Welcome, {this.state.profile.username}</h1>
         <div className="row">
-          {this.state.edit ?  
-          <EditUserInfo profile={this.state.profile} fileSelectedHanler={this.fileSelectedHanler} toggleEditMode={this.toggleEditMode} updateState={this.updateState} /> 
-          : <UserInfo profile={this.state.profile} fileSelectedHanler={this.fileSelectedHanler} saveChanges={this.saveChanges} editMode={this.editMode}/>}
-          {/* <UserInfo profile={this.state.profile} fileSelectedHanler={this.fileSelectedHanler} editMode={this.editMode}/> */}
-          <PostsContainer currentUser={this.props.currentUser}/>
+          <div className="col-md-4">
+            {this.state.edit ?  
+            <EditUserInfo profile={this.state.profile} fileSelectedHandler={this.fileSelectedHandler} updateState={this.updateState} /> 
+            : <UserInfo profile={this.state.profile} fileSelectedHandler={this.fileSelectedHandler} saveChanges={this.saveChanges} editMode={this.editMode}/>}
+          </div>
+          <div className="col-md-8">
+            {/* <UserInfo profile={this.state.profile} fileSelectedHandler={this.fileSelectedHandler} editMode={this.editMode}/> */}
+            <PostsContainer currentUser={this.props.currentUser}/>
+          </div>
         </div>
       </div>
     );

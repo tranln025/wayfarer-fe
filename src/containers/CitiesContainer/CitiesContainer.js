@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import CityList from '../../components/CityList/CityList';
 import CityView from '../../components/CityView/CityView';
-import Article from '../../components/Article/Article';
 import PostPreview from '../../components/PostPreview/PostPreview';
 import './CitiesContainer.css';
 
@@ -75,7 +74,6 @@ class CitiesContainer extends Component {
                         </div>
                         <div className="row">
                             {this.state.articleList.length && this.state.articleList.map((article, index) => 
-                            // <Article article={article} index={index} />
                             <PostPreview article={article} index={index} />
                             )}
                         </div>
