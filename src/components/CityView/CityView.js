@@ -24,11 +24,11 @@ class CityView extends Component {
         return (
             <>
                 <div className="city-page row">
-                    <div className="city-info">
+                    <div className="city-info col-5">
                         <h2>{this.props.selectedCityObject && this.props.selectedCityObject.name}</h2>
                         <h5>{this.props.selectedCityObject && this.props.selectedCityObject.country}</h5>
                     </div>
-                    <div className="city-img-container">
+                    <div className="city-img-container col-7">
                         <img className="city-img" src={this.props.selectedCityObject && this.props.selectedCityObject.photo} alt={this.props.selectedCityObject && this.props.selectedCityObject.name}/>
                         <a onClick={this.handlePostFormOpen} className="add-post-btn btn"><i className="fas fa-plus-circle fa-3x"></i></a>
                     </div>
