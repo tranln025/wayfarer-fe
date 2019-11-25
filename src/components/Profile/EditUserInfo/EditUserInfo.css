@@ -1,28 +1,28 @@
 .user-details {
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 35%;
-    max-width: 400px;
-    height: 700px;
-    margin: 20px;
-  }
-  .avatar-container {
-   width: 300px;
-   height: 300px;
-   overflow: hidden;
-   text-align: center;
-   display: inline-block;
-  }
+  border: 1px solid cornflowerblue;
+  border-radius: 5px;
+  max-width: 400px;
+  height: 700px;
+  margin: 20px;
+  box-sizing: border-box;
+}
+.avatar-container {
+  max-width: 300px;
+  max-height: 300px;
+  overflow: hidden;
+  text-align: center;
+  display: inline-block;
+}
   
-  #avatar {
-    height: 100%;
-    width: 100%;
-    position: relative;
-    text-align: center;
-    object-fit: cover;
-    align-content: center;
-    border-radius: 10px;
-  }
+#avatar {
+  height: auto;
+  max-width: 100%;
+  position: relative;
+  text-align: center;
+  object-fit: cover;
+  align-content: center;
+  border-radius: 10px;
+}
 
 form input {
   text-align: center;

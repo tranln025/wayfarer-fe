@@ -56,7 +56,7 @@ class EditUserInfo extends Component {
             .catch((err)=>console.log(err));
     };
 
-    fileSelectedHanler = (photo) => {
+    fileSelectedHandler = (photo) => {
         this.setState({
             selectedFile: photo[0]
         }, function() {
@@ -83,7 +83,7 @@ class EditUserInfo extends Component {
                 <img id="avatar" src={this.props.profile.photo} alt="avatar"></img>
 
                 </div>
-                <input id="add-file" type="file" onChange={ (e) => this.fileSelectedHanler(e.target.files) } />
+                <input id="add-file" type="file" onChange={ (e) => this.fileSelectedHandler(e.target.files) } />
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input onChange={this.handleChange} className="form-control form-control-lg" type="text" name="username" value={this.state.username} />
@@ -97,8 +97,8 @@ class EditUserInfo extends Component {
                     <input onChange={this.handleChange} className="form-control form-control-lg" type="text" name="currentCity" value={this.state.currentCity} />
                 </div>
                 
-                {/* <button name="save-ptofile" onClick={this.saveChanges}>Save</button> */}
-                <Button name="save-ptofile" onClick={this.saveChanges} variant="outline-secondary">Save</Button>
+                {/* <button name="save-profile" onClick={this.saveChanges}>Save</button> */}
+                <Button name="save-profile" onClick={this.saveChanges} variant="outline-secondary">Save</Button>
 
             </form>
 

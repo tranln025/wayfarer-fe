@@ -1,3 +1,8 @@
 .profile-container {
     margin: 10px 50px 0 50px;
 }
+
+.row {
+    margin: 0 auto;
+    text-align: center;
+}
