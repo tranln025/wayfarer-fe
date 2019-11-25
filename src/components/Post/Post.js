@@ -4,6 +4,7 @@ import './Post.css';
 import DeleteConfirmation from './DeleteConfirmation/DeleteConfirmation';
 import EditPostDetails from '../Posts/EditPostDetails/EditPostDetails';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 
 class Post extends Component {
   state = {
@@ -44,6 +45,30 @@ class Post extends Component {
       };
     });
   };
+
+  addEditButtons = () => {
+    return (
+      <>
+        <div className="edit-buttons-container">
+          <div>
+            <Button className='remove' onClick={this.handleDeleteModalOpen} variant="outline-primary">Delete</Button>
+            <DeleteConfirmation deleteModalOpen={this.state.deleteModalOpen} handleDeleteModalOpen={this.handleDeleteModalOpen} postTitle={this.state.post.title} />
+          </div>
+          <div>
+            <Button className='edit' onClick={this.handleEditPostFormOpen} variant="outline-primary">Edit</Button>
+            {/* <a onClick={this.handleEditPostFormOpen} className="add-post-btn btn"><i class="far fa-edit"></i></a> */}
+            <EditPostDetails postFormOpen={this.state.postFormOpen} handleEditPostFormOpen={this.handleEditPostFormOpen} currentUser={this.props.currentUser} post={this.state.post}/>
+          </div>
+        </div>
+      </>
+    )
+  }
+
+  convertDay = (day) => {
+    let postDate = new Date(day).toDateString();
+    console.log(postDate);
+    return postDate
+  }
   
   render() {
     return(
@@ -53,16 +78,15 @@ class Post extends Component {
         </div>
         <div className="post-info">
           <h2>{this.state.post.title}</h2>
+          <h5>by {this.state.author.username}</h5>
+          <p>{this.convertDay(this.state.post.postDate)}</p>
           <p>{this.state.post.content}</p>
-          <h4>{this.state.author.username}</h4>
-          <div>
-            <button className='remove' onClick={this.handleDeleteModalOpen}>Delete</button>
-          </div>
+          {this.state.author._id === localStorage.getItem('uid') && this.addEditButtons()}
+
         </div>
-        <DeleteConfirmation deleteModalOpen={this.state.deleteModalOpen} handleDeleteModalOpen={this.handleDeleteModalOpen} postTitle={this.state.post.title} />
-        <a onClick={this.handleEditPostFormOpen} className="add-post-btn btn"><i class="far fa-edit"></i></a>
-        <EditPostDetails postFormOpen={this.state.postFormOpen} handleEditPostFormOpen={this.handleEditPostFormOpen} currentUser={this.props.currentUser} post={this.state.post}/>
+
       </div>
+
     )
   };
 };
