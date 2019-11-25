@@ -11,7 +11,7 @@ const PostPreview = (props) => {
         <Link style={{ textDecoration: 'none' }} to={"/post/" + props.article._id}><div className="post-preview-container">
             <div className="post-preview-flex-container">
                 <div className="avatar-container-post-preview">
-                    <img src={props.article.author.photo} />
+                    <img src={props.article.author.photo} alt="article" />
                 </div>
                 <div className="post-preview-info">
                     <h4>{props.article.title}</h4>
