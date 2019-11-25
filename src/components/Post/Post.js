@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import './Post.css';
 import DeleteConfirmation from './DeleteConfirmation/DeleteConfirmation';
+import EditPostDetails from '../Posts/EditPostDetails/EditPostDetails';
 import axios from 'axios';
 
 class Post extends Component {
@@ -22,6 +23,23 @@ class Post extends Component {
       })
       .catch(err => console.log(err));
   };
+
+  handlePostFormOpen = () => {
+    this.setState((prevState) => {
+        return {
+            postFormOpen: !prevState.postFormOpen
+        }
+    });
+};
+
+  handleEditPostFormOpen = () => {
+    this.setState((prevState) => {
+        return {
+            postFormOpen: !prevState.postFormOpen
+        }
+    });
+    // this.props.refreshPage();
+};
 
   handleDeleteModalOpen = () => {
     this.setState((prevState) => {
@@ -46,6 +64,8 @@ class Post extends Component {
           </div>
         </div>
         <DeleteConfirmation deleteModalOpen={this.state.deleteModalOpen} handleDeleteModalOpen={this.handleDeleteModalOpen} postTitle={this.state.post.title} />
+        <a onClick={this.handleEditPostFormOpen} className="add-post-btn btn"><i class="fas fa-plus-circle fa-2x"></i></a>
+        <EditPostDetails postFormOpen={this.state.postFormOpen} handleEditPostFormOpen={this.handleEditPostFormOpen} currentUser={this.props.currentUser} post={this.state.post}/>
       </div>
     )
   };
