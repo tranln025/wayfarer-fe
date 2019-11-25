@@ -1,9 +1,15 @@
 .carousel-item {
-  height: 40vh;
+  height: 60vh;
   width: 100%;
   font-size: 50px;
   border: 2px;
-  background: red;
+}
+
+.carousel-img {
+  height: 60vh;
+  width: 100%;
+  font-size: 50px;
+  border: 2px;
 }
 
 .carousel {

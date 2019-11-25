@@ -14,13 +14,34 @@ const Carousel = () => (
       </a>
       <div className="carousel-inner">
         <div className="carousel-item active">
-          <h1>Slide one</h1>
+          <img className="carousel-img" src="https://cdn.londonandpartners.com/visit/general-london/areas/river/76709-640x360-houses-of-parliament-and-london-eye-on-thames-from-above-640.jpg" alt="london"/>
         </div>
         <div className="carousel-item">
-          <h1>Slide two</h1>
+          <img className="carousel-img" src="https://cdn.aarp.net/content/dam/aarp/travel/destination-guides/2018/04/1140-travel-destination-san-francisco-main-page.imgcache.rev2e8bf9592b441099e8e7efb70e1c1e4b.web.650.370.jpg" alt="san francisco"/>
         </div>
         <div className="carousel-item">
-        <h1>Slide three</h1>
+          <img className="carousel-img" src="https://www.macleans.ca/wp-content/uploads/2017/04/12.-Winnipeg_Manitoba.jpg" alt="winnipeg"/>
+        </div>
+        <div className="carousel-item">
+          <img className="carousel-img" src="https://skyticket.com/guide/wp-content/uploads/2017/12/shutterstock_719357683.jpg" alt="vienna"/>
+        </div>
+        <div className="carousel-item">
+          <img className="carousel-img" src="https://assets.vancouverisawesome.com/wp-content/uploads/2019/09/25093747/sydney-opera-house.jpg" alt="sydney"/>
+        </div>
+        <div className="carousel-item">
+          <img className="carousel-img" src="https://www.nationalgeographic.com/content/dam/travel/Guide-Pages/north-america/seattle-travel.adapt.1900.1.jpg" alt="seatle"/>
+        </div>
+        <div className="carousel-item">
+          <img className="carousel-img" src="https://www.ef.co.nz/sitecore/__/~/media/universal/stage/5x2/destinations/de/berlin.jpg" alt="berlin"/>
+        </div>
+        <div className="carousel-item">
+          <img className="carousel-img" src="https://plushostels.com/files/firenze/florence_cover_min.jpg" alt="florence"/>
+        </div>
+        <div className="carousel-item">
+          <img className="carousel-img" src="https://www.telegraph.co.uk/content/dam/Travel/Destinations/Asia/Hong%20Kong/hong-kong-victoria-peak-pano-guide.jpg?imwidth=450" alt="hong-kong"/>
+        </div>
+        <div className="carousel-item">
+          <img className="carousel-img" src="https://www.fodors.com/wp-content/uploads/2019/04/HERO_BangkokTips_Hero_shutterstock_367503629.jpg" alt="bangkok"/>
         </div>
       </div>
     </div>
