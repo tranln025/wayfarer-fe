@@ -9,6 +9,8 @@ class PostsContainer extends Component {
     posts: [],
   };
 
+  
+
   componentDidMount () {
     axios.get(`${process.env.REACT_APP_API_URL}/posts/all`, {
       withCredentials: true,
