@@ -48,7 +48,7 @@ class EditPostDetails extends Component {
       content: this.state.content,
       photo: this.state.photo,
     }
-    axios.put(`${process.env.REACT_APP_API_URL}/posts/${postId}/update`, body, {
+    axios.put(`${process.env.REACT_APP_API_URL}/posts/${postId}`, body, {
       withCredentials: true,
     })
       .then((res) => {
