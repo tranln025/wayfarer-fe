@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-import Article from '../Article/Article';
 import PostForm from '../PostForm/PostForm';
+import PostPreview from '../../components/PostPreview/PostPreview';
+
+
+import './CityView.css';
 
 class CityView extends Component {
     state = {
@@ -19,16 +21,20 @@ class CityView extends Component {
     };
 
     render() {
-        // let thisCity = this.props.cityList.find(city => return city.name === this.props.selectedCity);
-        // let thisCity = this.props.cityList.filter(obj => {return obj.name === this.props.selectedCity})[0]
-        
         return (
-            <div>
-                <h1>{this.props.selectedCityObject && this.props.selectedCityObject.name}</h1>
-                <Article />
-                <a onClick={this.handlePostFormOpen} className="add-post-btn btn"><i class="fas fa-plus-circle fa-2x"></i></a>
-                <PostForm postFormOpen={this.state.postFormOpen} handlePostFormOpen={this.handlePostFormOpen} currentUser={this.props.currentUser} />
-            </div>
+            <>
+                <div className="city-page row">
+                    <div className="city-info">
+                        <h2>{this.props.selectedCityObject && this.props.selectedCityObject.name}</h2>
+                        <h5>{this.props.selectedCityObject && this.props.selectedCityObject.country}</h5>
+                    </div>
+                    <div className="city-img-container">
+                        <img className="city-img" src={this.props.selectedCityObject && this.props.selectedCityObject.photo} alt={this.props.selectedCityObject && this.props.selectedCityObject.name}/>
+                        <a onClick={this.handlePostFormOpen} className="add-post-btn btn"><i className="fas fa-plus-circle fa-2x"></i></a>
+                    </div>
+                    <PostForm postFormOpen={this.state.postFormOpen} handlePostFormOpen={this.handlePostFormOpen} currentUser={this.props.currentUser} />
+                </div>
+            </>
         )
     }
 }
