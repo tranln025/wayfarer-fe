@@ -13,16 +13,20 @@ class Post extends Component {
   };
   
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_API_URL}/posts/findById/${this.props.match.params.postId}`)
-      .then((res)=> {
-        console.log(res)
-        this.setState({
-          post: res.data.data,
-          author: res.data.data.author
-        });
-      })
-      .catch(err => console.log(err));
+   this.fetchNewPost();
   };
+
+  fetchNewPost = () => {
+    axios.get(`${process.env.REACT_APP_API_URL}/posts/findById/${this.props.match.params.postId}`)
+    .then((res)=> {
+      console.log(res)
+      this.setState({
+        post: res.data.data,
+        author: res.data.data.author
+      });
+    })
+    .catch(err => console.log(err));
+  }
 
   handlePostFormOpen = () => {
     this.setState((prevState) => {
@@ -30,6 +34,7 @@ class Post extends Component {
             postFormOpen: !prevState.postFormOpen
         }
     });
+    this.props.refreshPage();
 };
 
   handleEditPostFormOpen = () => {
@@ -38,7 +43,7 @@ class Post extends Component {
             postFormOpen: !prevState.postFormOpen
         }
     });
-    // this.props.refreshPage();
+    this.fetchNewPost();
 };
 
   handleDeleteModalOpen = () => {
@@ -64,7 +69,7 @@ class Post extends Component {
           </div>
         </div>
         <DeleteConfirmation deleteModalOpen={this.state.deleteModalOpen} handleDeleteModalOpen={this.handleDeleteModalOpen} postTitle={this.state.post.title} />
-        <a onClick={this.handleEditPostFormOpen} className="add-post-btn btn"><i class="fas fa-plus-circle fa-2x"></i></a>
+        <a onClick={this.handleEditPostFormOpen} className="add-post-btn btn"><i class="far fa-edit"></i></a>
         <EditPostDetails postFormOpen={this.state.postFormOpen} handleEditPostFormOpen={this.handleEditPostFormOpen} currentUser={this.props.currentUser} post={this.state.post}/>
       </div>
     )

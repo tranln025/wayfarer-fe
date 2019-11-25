@@ -18,6 +18,7 @@ class EditPostDetails extends Component {
       city: this.props.post.city,
       title: this.props.post.title,
       content: this.props.post.content,
+      photo: this.props.post.photo,
     })
   }
 
@@ -32,18 +33,20 @@ class EditPostDetails extends Component {
     this.setState({
       [event.target.name]: event.target.value,
     })
+
   }
 
 
 
   saveChanges = (event) => {
-    console.log("update post details", event)
-    const postId = this.params.post.id;
     event.preventDefault();
+    console.log("update post details", event)
+    const postId = this.props.post._id;
     let body = {
-      city: this.props.post.city,
-      title: this.props.post.title,
-      content: this.props.post.content,
+      city: this.state.city,
+      title: this.state.title,
+      content: this.state.content,
+      photo: this.state.photo,
     }
     axios.put(`${process.env.REACT_APP_API_URL}/posts/${postId}/update`, body, {
       withCredentials: true,
