@@ -24,8 +24,6 @@ const CityList = (props) => {
                                         </div>
                                     </ListGroup.Item>
                                 </Link>
-                                
-                 
                             ) 
                         })}
                     </ListGroup>
