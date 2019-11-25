@@ -1,12 +1,11 @@
-.city-page {
+/* .city-page {
     height: 450px;
-    
-}
+} */
 
 .city-info {
     text-align: left;
     padding: 40px;
-    width: 40vw;
+    /* width: 35vw; */
 }
 
 .city-info h2 {
@@ -23,12 +22,16 @@
 
 .city-img-container {
     padding: 40px;
-    max-height: 35vh;
+    /* max-height: 35vh; */
     text-align: right;
     align-content: right;
-    width: 40vw;
+    /* width: 35%; */
 }
 
-.city-posts {
+/* .city-posts {
     position: relative;
+} */
+
+.fa-plus-circle:hover {
+    cursor: pointer;
 }

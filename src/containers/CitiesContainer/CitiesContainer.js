@@ -65,10 +65,10 @@ class CitiesContainer extends Component {
         return (
             <>
                 <div className="row cities-container">
-                    <div className="col city-list">
+                    <div className="col-md-4 city-list">
                         {this.state.cityList && <CityList cityList={this.state.cityList} handleSelect={this.handleSelect} getArticleList={this.getArticleList}/>}
                     </div>
-                    <div className="col">
+                    <div className="col-md-8">
                         <div className="row">
                             <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList} refreshPage={this.refreshPage} selectedCityObject={this.state.selectedCityObject}/>
                         </div>
