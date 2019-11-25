@@ -11,16 +11,16 @@ const CityList = (props) => {
             <div className="citiesList-container"> 
                 <div className="citiesList">
                     <h3>Cities</h3>
-                    <ListGroup>
+                    <ListGroup >
                         {props.cityList && props.cityList.map((city, index)=> {
                             return (
-                                <Link  style={{ textDecoration: 'none' }} to={"/cities/" + city.name.toLowerCase().split(' ').join('-')}>
-                                    <ListGroup.Item className="list-item" variant="secondary" action href={"/cities/" + city.name.toLowerCase().split(' ').join('-')} name={city.name} onClick={props.handleSelect}>
-                                        <div className="city-container">
-                                            <div className="city-photo-container">
+                                <Link name={city.name} onClick={()=>props.handleSelect(city.name)}  style={{ textDecoration: 'none' }} to={"/cities/" + city.name.toLowerCase().split(' ').join('-')}>
+                                    <ListGroup.Item  name={city.name} onClick={()=>props.handleSelect(city.name)} className="list-item" variant="secondary" action href={"/cities/" + city.name.toLowerCase().split(' ').join('-')} name={city.name} onClick={()=>props.handleSelect(city.name)}>
+                                        <div name={city.name} onClick={()=>props.handleSelect(city.name)} className="city-container">
+                                            <div name={city.name} onClick={()=>props.handleSelect(city.name)} className="city-photo-container">
                                                 <img src={city.photo} />
                                             </div>
-                                            <p>{city.name}</p>
+                                            <p name={city.name} onClick={()=>props.handleSelect(city.name)}>{city.name}</p>
                                         </div>
                                     </ListGroup.Item>
                                 </Link>
