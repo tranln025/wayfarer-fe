@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import Article from '../Article/Article';
 import PostForm from '../PostForm/PostForm';
 
