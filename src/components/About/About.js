@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './About.css';
 
 
-const About = () => (
+class About extends Component {
+
+}
+
+(
 <div className="container">
   <div className="topics">
     <h3>Topic</h3>
