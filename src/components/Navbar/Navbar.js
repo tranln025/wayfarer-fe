@@ -5,6 +5,8 @@ import { withRouter } from "react-router";
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 
+import './Navbar.css';
+
 class Navbar extends React.Component {
   state = {
     loginModalOpen: false,
