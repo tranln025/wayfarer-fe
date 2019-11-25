@@ -6,6 +6,8 @@ import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 import './Navbar.css';
 
+import './Navbar.css';
+
 class Navbar extends React.Component {
   state = {
     loginModalOpen: false,
