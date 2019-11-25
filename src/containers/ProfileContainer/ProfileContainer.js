@@ -23,7 +23,6 @@ class ProfileContainer extends Component {
       withCredentials: true,
     })
       .then(res => {
-        console.log('res.data>>>>>>>>>', res.data);
         this.setState({
           profile: res.data.data,
         });
@@ -47,7 +46,6 @@ class ProfileContainer extends Component {
   };
 
   editMode = () => {
-    console.log("edit mode");
     this.setState({edit: true})
   };
 
@@ -63,7 +61,7 @@ class ProfileContainer extends Component {
         <div className="row">
           <div className="col-md-4">
             {this.state.edit ?  
-            <EditUserInfo profile={this.state.profile} fileSelectedHandler={this.fileSelectedHandler} toggleEditMode={this.toggleEditMode} updateState={this.updateState} /> 
+            <EditUserInfo profile={this.state.profile} fileSelectedHandler={this.fileSelectedHandler} updateState={this.updateState} /> 
             : <UserInfo profile={this.state.profile} fileSelectedHandler={this.fileSelectedHandler} saveChanges={this.saveChanges} editMode={this.editMode}/>}
           </div>
           <div className="col-md-8">

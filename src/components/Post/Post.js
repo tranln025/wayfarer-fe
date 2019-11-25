@@ -13,7 +13,7 @@ class Post extends Component {
   };
   
   componentDidMount() {
-   this.fetchNewPost();
+    this.fetchNewPost();
   };
 
   fetchNewPost = () => {

@@ -4,8 +4,6 @@ import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-//handlemodalopen from citycontainer
-
 class PostForm extends Component {
   state = {
     title: '',
