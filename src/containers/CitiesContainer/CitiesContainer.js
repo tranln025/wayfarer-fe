@@ -28,11 +28,11 @@ class CitiesContainer extends Component {
         this.getArticleList();
     }
 
-    handleSelect = (event) => {
+    handleSelect = (city) => {
         console.log("changing selected city");
-        console.log(event.target.name)
+        console.log(city);
         this.setState({
-            selectedCity: event.target.name,
+            selectedCity: city,
         }, function() {this.getArticleList()})
     }
 

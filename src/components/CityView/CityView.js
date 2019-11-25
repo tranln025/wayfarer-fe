@@ -16,8 +16,8 @@ class CityView extends Component {
                 postFormOpen: !prevState.postFormOpen
             }
         });
+        console.log('lahseiufbh')
         this.props.refreshPage();
-
     };
 
     render() {

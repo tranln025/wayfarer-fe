@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import './Post.css';
 import DeleteConfirmation from './DeleteConfirmation/DeleteConfirmation';
+import EditPostDetails from '../Posts/EditPostDetails/EditPostDetails';
 import axios from 'axios';
 
 class Post extends Component {
@@ -12,16 +13,29 @@ class Post extends Component {
   };
   
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_API_URL}/posts/findById/${this.props.match.params.postId}`)
-      .then((res)=> {
-        console.log(res)
-        this.setState({
-          post: res.data.data,
-          author: res.data.data.author
-        });
-      })
-      .catch(err => console.log(err));
+   this.fetchNewPost();
   };
+
+  fetchNewPost = () => {
+    axios.get(`${process.env.REACT_APP_API_URL}/posts/findById/${this.props.match.params.postId}`)
+    .then((res)=> {
+      console.log(res)
+      this.setState({
+        post: res.data.data,
+        author: res.data.data.author
+      });
+    })
+    .catch(err => console.log(err));
+  }
+
+  handleEditPostFormOpen = () => {
+    this.setState((prevState) => {
+        return {
+            postFormOpen: !prevState.postFormOpen
+        }
+    });
+    this.fetchNewPost();
+};
 
   handleDeleteModalOpen = () => {
     this.setState((prevState) => {
@@ -46,6 +60,8 @@ class Post extends Component {
           </div>
         </div>
         <DeleteConfirmation deleteModalOpen={this.state.deleteModalOpen} handleDeleteModalOpen={this.handleDeleteModalOpen} postTitle={this.state.post.title} />
+        <a onClick={this.handleEditPostFormOpen} className="add-post-btn btn"><i class="far fa-edit"></i></a>
+        <EditPostDetails postFormOpen={this.state.postFormOpen} handleEditPostFormOpen={this.handleEditPostFormOpen} currentUser={this.props.currentUser} post={this.state.post}/>
       </div>
     )
   };
