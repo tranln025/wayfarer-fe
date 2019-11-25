@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import CityList from '../../components/CityList/CityList';
 import CityView from '../../components/CityView/CityView';
-import Article from '../../components/Article/Article';
 import PostPreview from '../../components/PostPreview/PostPreview';
 import './CitiesContainer.css';
 
@@ -67,10 +66,10 @@ class CitiesContainer extends Component {
             <>
                 {this.state.cityList && <CityList cityList={this.state.cityList} handleSelect={this.handleSelect} getArticleList={this.getArticleList}/>}
                 <div className="article-list">
-                <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList} refreshPage={this.refreshPage}/>
+                <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList} refreshPage={this.refreshPage} />
                 {this.state.articleList.length && this.state.articleList.map((article, index) => 
                     // <Article article={article} index={index} />
-                    <PostPreview article={article} index={index} />
+                    <PostPreview article={article} index={index} selectedCity={this.state.selectedCity} selectedCityObject={this.state.selectedCityObject} />
                 )}
                 </div>
             </>

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Article from '../Article/Article';
 import PostForm from '../PostForm/PostForm';
 
 class CityView extends Component {
@@ -20,7 +19,6 @@ class CityView extends Component {
         return (
             <div>
                 <h1>{this.props.selectedCity}</h1>
-                <Article />
                 <a onClick={this.handlePostFormOpen} className="add-post-btn btn"><i class="fas fa-plus-circle fa-2x"></i></a>
                 <PostForm postFormOpen={this.state.postFormOpen} handlePostFormOpen={this.handlePostFormOpen} currentUser={this.props.currentUser} />
             </div>

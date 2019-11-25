@@ -22,8 +22,8 @@ class PostForm extends Component {
   handleCitySelect = (e) => {
     this.setState({
       city: e.target.value,
-    })
-  }
+    });
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
