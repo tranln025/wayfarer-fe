@@ -32,30 +32,43 @@ class PostForm extends Component {
       withCredentials: true,
     })
     .then((res) => {
+      console.log('toogle plz',res)
       this.props.handlePostFormOpen();
     })
     .catch((error) => console.log(error));
   }
 
+//   handlePostFormOpen = () => {
+//     this.setState((prevState) => {
+//         return {
+//             postFormOpen: !prevState.postFormOpen
+//         }
+//     });
+//     this.fetchPost();
+//     this.props.refreshPage();
+// };
+
   componentDidMount() {
     axios.get(`${process.env.REACT_APP_API_URL}/cities/all`)
-      .then((res) => {
-        const cities = res.data.data.map(city => {
-          return {
-            value: city._id, 
-            display: city.name
-          };
-        });
-        this.setState({
-          cities: [{
-            value: '',
-            display: 'Select a city'
-          }]
-          .concat(cities)
-        });
-      })
-      .catch((error) => console.log(error));
+    .then((res) => {
+      const cities = res.data.data.map(city => {
+        return {
+          value: city._id, 
+          display: city.name
+        };
+      });
+      this.setState({
+        cities: [{
+          value: '',
+          display: 'Select a city'
+        }]
+        .concat(cities)
+      });
+    })
+    .catch((error) => console.log(error));
   }
+
+
 
   render () {
     return (

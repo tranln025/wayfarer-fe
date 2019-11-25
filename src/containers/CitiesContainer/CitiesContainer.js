@@ -64,13 +64,20 @@ class CitiesContainer extends Component {
 
         return (
             <>
-                {this.state.cityList && <CityList cityList={this.state.cityList} handleSelect={this.handleSelect} getArticleList={this.getArticleList}/>}
-                <div className="article-list">
-                <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList} refreshPage={this.refreshPage} />
-                {this.state.articleList.length && this.state.articleList.map((article, index) => 
-                    // <Article article={article} index={index} />
-                    <PostPreview article={article} index={index} selectedCity={this.state.selectedCity} selectedCityObject={this.state.selectedCityObject} />
-                )}
+                <div className="row cities-container">
+                    <div className="col city-list">
+                        {this.state.cityList && <CityList cityList={this.state.cityList} handleSelect={this.handleSelect} getArticleList={this.getArticleList}/>}
+                    </div>
+                    <div className="col">
+                        <div className="row">
+                            <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList} refreshPage={this.refreshPage} selectedCityObject={this.state.selectedCityObject}/>
+                        </div>
+                        <div className="row">
+                            {this.state.articleList.length && this.state.articleList.map((article, index) => 
+                            <PostPreview article={article} index={index} />
+                            )}
+                        </div>
+                    </div>
                 </div>
             </>
         )

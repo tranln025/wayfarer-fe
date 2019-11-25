@@ -28,15 +28,6 @@ class Post extends Component {
     .catch(err => console.log(err));
   }
 
-  handlePostFormOpen = () => {
-    this.setState((prevState) => {
-        return {
-            postFormOpen: !prevState.postFormOpen
-        }
-    });
-    this.props.refreshPage();
-};
-
   handleEditPostFormOpen = () => {
     this.setState((prevState) => {
         return {
