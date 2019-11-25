@@ -1,0 +1,8 @@
+.form-group {
+  margin-bottom: 0;
+}
+
+.error-msg {
+  margin-bottom: 16px;
+  color: firebrick;
+}
