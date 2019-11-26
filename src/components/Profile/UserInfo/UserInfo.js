@@ -15,7 +15,7 @@ const UserInfo = (props) => {
         <p>email: {props.profile.email}</p>
         <p>Current city: {props.profile.currentCity}</p>
         {/* <button name="edit-profile" onClick={props.editMode}>Edit</button> */}
-        <Button name="edit-profile" onClick={props.editMode} variant="outline-secondary">Edit</Button>
+        <Button id="edit" name="edit-profile" onClick={props.editMode} variant="outline-secondary">Edit</Button>
       </div>
     )
   }

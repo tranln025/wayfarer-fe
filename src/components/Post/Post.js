@@ -80,10 +80,11 @@ class Post extends Component {
         </div>
         <div className="author-info-container">
           <div className="author-photo-container">
-            <img id="user-photo" src={this.state.author.photo} />
+            <img id="user-photo" src={this.state.author.photo} alt={"user profile"} />
           </div>
-          {/* <Link to={'/users/' + this.author._id}> */}
+          <Link style={{ textDecoration: 'none' }} to={'/users/' + this.state.author._id}>
             <p>by {this.state.author.username}</p>
+          </ Link>
         </div>
         <div className="post-info">
           <h2>{this.state.post.title}</h2>
@@ -93,7 +94,6 @@ class Post extends Component {
         </div>
         <CommentsContainer postId={this.props.match.params.postId} />
       </div>
-      </>
     )
   };
 };

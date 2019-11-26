@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import Truncate from 'react-truncate';
 import './PostPreview.css'
 
 
@@ -16,7 +16,9 @@ const PostPreview = (props) => {
                         </div>
                         <div className="post-preview-info">
                             <h4>{props.article.title}</h4>
-                            <p>{textPreview}</p>
+                            <Truncate charcters={1000} ellipsis={<span>... <a href='/link/to/article'>Read more</a></span>}>
+                                <p>{textPreview}</p>
+                            </Truncate>
                         </div>
                     </div>
                 </div></Link>

@@ -8,6 +8,8 @@ import './Navbar.css';
 
 import './Navbar.css';
 
+import logo from './logo.png';
+
 class Navbar extends React.Component {
   state = {
     loginModalOpen: false,
@@ -44,7 +46,12 @@ class Navbar extends React.Component {
     return (
       <>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-        <Link className="navbar-brand" to="/">Wayfarer</Link>
+        <Link className="navbar-brand" to="/">
+        <div className="logo-container">
+          <img src={logo} />
+        </div>
+        <span>Wayfarer</span>
+        </Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
