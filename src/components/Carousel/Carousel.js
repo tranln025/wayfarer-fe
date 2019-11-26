@@ -1,6 +1,5 @@
 import React from 'react';
 import './Carousel.css';
-import { Link } from 'react';
 
 const Carousel = () => (
   // <div className="carousel-container container">
