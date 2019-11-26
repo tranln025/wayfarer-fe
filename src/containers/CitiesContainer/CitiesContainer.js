@@ -69,14 +69,10 @@ class CitiesContainer extends Component {
                         {this.state.cityList && <CityList cityList={this.state.cityList} handleSelect={this.handleSelect} getArticleList={this.getArticleList}/>}
                     </div>
                     <div className="col-md-8">
-                        <div className="row">
-                            <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList} refreshPage={this.refreshPage} selectedCityObject={this.state.selectedCityObject}/>
-                        </div>
-                        <div className="row">
-                            {this.state.articleList && this.state.articleList.map((article, index) => 
+                        <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList} refreshPage={this.refreshPage} selectedCityObject={this.state.selectedCityObject}/>
+                        {this.state.articleList && this.state.articleList.map((article, index) => 
                             <PostPreview article={article} index={index} />
-                            )}
-                        </div>
+                        )}
                     </div>
                 </div>
             </>
