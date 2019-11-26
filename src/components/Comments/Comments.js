@@ -1,7 +1,7 @@
 import React from 'react';
 import 'moment-timezone';
 import './Comments.css';
-var moment = require('moment');
+const moment = require('moment');
 
 const Comments = (props) => {
   const comments = props.comments.map(comment => {
@@ -28,14 +28,14 @@ const Comments = (props) => {
           <p>{comment.content}</p>
         </div>
       </li>
-    )
-  })
+    );
+  });
 
   return (
     <ul className="media-list">
       {comments}
     </ul>
-  )
-}
+  );
+};
 
 export default Comments;

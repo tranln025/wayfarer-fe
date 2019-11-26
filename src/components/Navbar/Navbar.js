@@ -14,7 +14,7 @@ class Navbar extends React.Component {
   state = {
     loginModalOpen: false,
     signupModalOpen: false,
-  }
+  };
 
   // Source for modal handling: https://stackoverflow.com/questions/56960664/how-to-make-popup-modal-appear-when-clicking-a-link
   handleLoginModalOpen = () => {
@@ -36,11 +36,11 @@ class Navbar extends React.Component {
   handleProfileRedirect = () => {
     const userId = localStorage.getItem('uid');
     this.props.history.push(`/users/${userId}`);
-  }
+  };
 
   handleCitiesRedirect = () => {
     this.props.history.push(`/cities`);
-  }
+  };
 
   render () {
     return (
@@ -87,8 +87,8 @@ class Navbar extends React.Component {
       <Login loginModalOpen={this.state.loginModalOpen} handleLoginModalOpen={this.handleLoginModalOpen} setCurrentUser={this.props.setCurrentUser} />
       <Signup signupModalOpen={this.state.signupModalOpen} handleSignupModalOpen={this.handleSignupModalOpen} setCurrentUser={this.props.setCurrentUser} />
       </>
-    )
-  }
-}
+    );
+  };
+};
 
 export default withRouter(Navbar);
