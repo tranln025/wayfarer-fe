@@ -73,7 +73,6 @@ class CitiesContainer extends Component {
                 this.setState({articleList: res.data.data.sort((a, b) => (a.postDate < b.postDate) ? 1 : -1)})
             }).catch((err)=>console.log(err));
         }
-       
     }
 
     render () {
