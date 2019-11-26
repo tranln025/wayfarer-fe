@@ -33,10 +33,10 @@ form input {
   margin: 0px 0px 30px 90px;
 }
 
-.form-group {
+.prof-info {
   text-align: right;
 }
-.form-group input {
+.prof-info input {
   margin: 0 30px 10px 20px;
   display: inline;
   width: 210px;
