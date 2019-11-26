@@ -12,10 +12,10 @@ class Signup extends Component {
     currentCity: '',
     password: '',
     password2: '',
-    usernameValid: false,
-    emailValid: false,
-    passwordValid: false,
-    password2Valid: false,
+    usernameValid: true,
+    emailValid: true,
+    passwordValid: true,
+    password2Valid: true,
   }
 
   validateForm = (event) => {
@@ -25,6 +25,9 @@ class Signup extends Component {
       res.data.data.forEach((user) => {
         if (this.state.email === user.email) {
           console.log('email exists')
+          this.setState({
+            emailValid: false,
+          })
         } else {
           this.setState({
             emailValid: true,
@@ -32,6 +35,9 @@ class Signup extends Component {
         };
         if (this.state.username === user.username) {
           console.log('username exists')
+          this.setState({
+            usernameValid: false,
+          })
         } else {
           console.log('here');
           this.setState({
@@ -41,6 +47,9 @@ class Signup extends Component {
       });
       if (this.state.password.length < 8) {
         console.log('password too short')
+        this.setState({
+          passwordValid: false,
+        })
       } else {
         this.setState({
           passwordValid: true,
@@ -48,17 +57,22 @@ class Signup extends Component {
       };
       if (this.state.password !== this.state.password2) {
         console.log('passwords do not match')
+        this.setState({
+          password2Valid: false,
+        })
       } else {
         this.setState({
           password2Valid: true,
-        })
-      }
+        });
+      };
     })
-    .then((res) => {
+    .then(() => {
       if (this.state.usernameValid && this.state.emailValid && this.state.passwordValid && this.state.password2Valid) {
         this.handleSubmit();
-      }
-    })
+      } else {
+        this.setState({ state: this.state })
+      };
+    });
   };
 
   handleChange = (event) => {
@@ -97,7 +111,7 @@ class Signup extends Component {
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input onChange={this.handleChange} className="form-control form-control-lg" type="email" id="email" name="email" value={this.state.email} />
-              <small className="error-msg">Invalid email</small>
+              {this.state.emailValid ? null : <small className="error-msg">Invalid email</small> }
             </div>
             <div className="form-group">
               <label htmlFor="currentCity">Current City</label>
@@ -106,12 +120,12 @@ class Signup extends Component {
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input onChange={this.handleChange} className="form-control form-control-lg" type="password" id="password" name="password" value={this.state.password} />
-              <small className="error-msg">Password must be at least 8 characters</small>
+              {this.state.passwordValid ? null : <small className="error-msg">Password must be at least 8 characters</small>}
             </div>
             <div className="form-group">
               <label htmlFor="password2">Confirm Password</label>
               <input onChange={this.handleChange} className="form-control form-control-lg" type="password" id="password2" name="password2" value={this.state.password2} />
-              <small className="error-msg">Passwords do not match</small>
+              { this.state.password2Valid ? null : <small className="error-msg">Passwords do not match</small>}
             </div>
             <button className="btn btn-primary float-right" type="submit">Sign Up</button>
           </form>
