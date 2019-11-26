@@ -18,63 +18,6 @@ class Signup extends Component {
     password2Valid: true,
   }
 
-  validateForm = (event) => {
-    event.preventDefault();
-    axios.get(`${process.env.REACT_APP_API_URL}/users/all`)
-    .then((res) => {
-      res.data.data.forEach((user) => {
-        if (this.state.email === user.email) {
-          console.log('email exists')
-          this.setState({
-            emailValid: false,
-          })
-        } else {
-          this.setState({
-            emailValid: true,
-          });
-        };
-        if (this.state.username === user.username) {
-          console.log('username exists')
-          this.setState({
-            usernameValid: false,
-          })
-        } else {
-          console.log('here');
-          this.setState({
-            usernameValid: true,
-          });
-        };
-      });
-      if (this.state.password.length < 8) {
-        console.log('password too short')
-        this.setState({
-          passwordValid: false,
-        })
-      } else {
-        this.setState({
-          passwordValid: true,
-        });
-      };
-      if (this.state.password !== this.state.password2) {
-        console.log('passwords do not match')
-        this.setState({
-          password2Valid: false,
-        })
-      } else {
-        this.setState({
-          password2Valid: true,
-        });
-      };
-    })
-    .then(() => {
-      if (this.state.usernameValid && this.state.emailValid && this.state.passwordValid && this.state.password2Valid) {
-        this.handleSubmit();
-      } else {
-        this.setState({ state: this.state })
-      };
-    });
-  };
-
   handleChange = (event) => {
     console.log(event);
     this.setState({
@@ -82,18 +25,49 @@ class Signup extends Component {
     });
   };
 
-  handleSubmit = (event) => {
+  validateForm = (e) => {
+    e.preventDefault();
+    if (this.state.password.length < 8) {
+      console.log('password too short');
+      this.setState({
+        passwordValid: false,
+      })
+    } else {
+      this.setState({
+        passwordValid: true,
+      });
+      if (this.state.password !== this.state.password2) {
+        console.log('passwords do not match');
+        this.setState({
+          password2Valid: false,
+        })
+      } else {
+        this.setState({
+          password2Valid: true,
+        }, this.handleSubmit);
+      };  
+    };
+  }
+
+  handleSubmit = () => {
     axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, this.state, {
       withCredentials: true,
     })
     .then((res) => {
-      console.log("res >>>", res)
-      this.props.setCurrentUser(res.data.data);
-      this.props.history.push(`/users/${res.data.data}`);
-      this.props.handleSignupModalOpen();
+      if (res.data.status === 400 || res.data.status === 500) {
+        console.log(res.data)
+        this.setState({
+          usernameValid: false,
+          emailValid: false,
+        })
+      } else {
+        this.props.setCurrentUser(res.data.data);
+        this.props.history.push(`/users/${res.data.data}`);
+        this.props.handleSignupModalOpen();
+      }
     })
-    .catch((error) => console.log(error));   
-  };
+    .catch(err => console.log(err))
+  }
 
   render() {
     return (
@@ -106,12 +80,12 @@ class Signup extends Component {
             <div className="form-group">
               <label htmlFor="username">Username</label>
               <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="username" name="username" value={this.state.username} />
-              {this.state.usernameValid ? null : <small className="error-msg">Please choose another username</small> }
+              {this.state.usernameValid ? null : <small className="error-msg">Please choose another username or email</small> }
             </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input onChange={this.handleChange} className="form-control form-control-lg" type="email" id="email" name="email" value={this.state.email} />
-              {this.state.emailValid ? null : <small className="error-msg">Invalid email</small> }
+              {this.state.emailValid ? null : <small className="error-msg">Please choose another username or email</small> }
             </div>
             <div className="form-group">
               <label htmlFor="currentCity">Current City</label>
