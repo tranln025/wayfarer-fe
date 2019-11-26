@@ -1,5 +1,5 @@
 .user-details {
-  border: 1px solid cornflowerblue;
+  border: 1px solid rgba(100, 149, 237, .6);
   border-radius: 5px;
   max-width: 400px;
   height: 700px;
@@ -30,5 +30,25 @@ form input {
 }
 
 #add-file {
-  margin: 0px 0px 20px 90px;
+  margin: 0px 0px 30px 90px;
+}
+
+.prof-info {
+  text-align: right;
+}
+.prof-info input {
+  margin: 0 30px 10px 20px;
+  display: inline;
+  width: 210px;
+  font-size: 15px;
+  text-align: left;
+  padding: 0px 5px;
+}
+
+.form-group label {
+  font-size: 15px;
+}
+
+#save {
+  margin: 30px;
 }

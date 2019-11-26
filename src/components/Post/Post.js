@@ -5,6 +5,9 @@ import DeleteConfirmation from './DeleteConfirmation/DeleteConfirmation';
 import EditPostDetails from '../Posts/EditPostDetails/EditPostDetails';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
+import CommentsContainer from '../../containers/CommentsContainer/CommentsContainer';
+var moment = require('moment');
 
 class Post extends Component {
   state = {
@@ -63,36 +66,31 @@ class Post extends Component {
       </>
     )
   }
-
-  convertDay = (day) => {
-    let postDate = new Date(day).toDateString();
-    console.log(postDate);
-    return postDate
-  }
   
   render() {
     return(
-      <div>
-        <div className="hero">
-          <img src={this.state.post.photo} alt="hero"/>
-        </div>
-        <div className="author-info-container">
-          <div className="author-photo-container">
-            <img id="user-photo" src={this.state.author.photo} alt={"user profile"} />
+      <>
+        <div className="wrapper">
+          <div className="hero">
+            <img src={this.state.post.photo} alt="hero"/>
           </div>
-          {/* <Link to={'/users/' + this.author._id}> */}
-            <p>by {this.state.author.username}</p>
+          <div className="author-info-container">
+            <div className="author-photo-container">
+              <img id="user-photo" src={this.state.author.photo} alt={"user profile"} />
+            </div>
+            <Link style={{ textDecoration: 'none' }} to={'/users/' + this.state.author._id}>
+              <p>by {this.state.author.username}</p>
+            </ Link>
+          </div>
+          <div className="post-info">
+            <h2>{this.state.post.title}</h2>
+            <p>{moment(this.state.post.postDate).fromNow()}</p>
+            <p>{this.state.post.content}</p>
+            {this.state.author._id === localStorage.getItem('uid') && this.addEditButtons()}
+            <CommentsContainer postId={this.props.match.params.postId} />
+          </div>
         </div>
-        <div className="post-info">
-          <h2>{this.state.post.title}</h2>
-          <p>{this.convertDay(this.state.post.postDate)}</p>
-          <p>{this.state.post.content}</p>
-          {this.state.author._id === localStorage.getItem('uid') && this.addEditButtons()}
-
-        </div>
-
-      </div>
-
+      </>
     )
   };
 };

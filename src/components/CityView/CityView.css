@@ -23,6 +23,7 @@
 
 .fa-plus-circle:hover {
     cursor: pointer;
+    color: #ED7864;
 }
 
 @media (max-width: 992px) {

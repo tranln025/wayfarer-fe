@@ -84,21 +84,21 @@ class EditUserInfo extends Component {
 
                 </div>
                 <input id="add-file" type="file" onChange={ (e) => this.fileSelectedHandler(e.target.files) } />
-                <div className="form-group">
+                <div className="form-group prof-info">
                     <label htmlFor="username">Username</label>
                     <input onChange={this.handleChange} className="form-control form-control-lg" type="text" name="username" value={this.state.username} />
                 </div>
-                <div className="form-group">
+                <div className="form-group prof-info">
                     <label htmlFor="email">Email</label>
                     <input onChange={this.handleChange} className="form-control form-control-lg" type="email" name="email" value={this.state.email} />
                 </div>
-                <div className="form-group">
+                <div className="form-group prof-info">
                     <label htmlFor="currentCity">Current City</label>
                     <input onChange={this.handleChange} className="form-control form-control-lg" type="text" name="currentCity" value={this.state.currentCity} />
                 </div>
                 
                 {/* <button name="save-profile" onClick={this.saveChanges}>Save</button> */}
-                <Button name="save-profile" onClick={this.saveChanges} variant="outline-secondary">Save</Button>
+                <Button id="save" name="save-profile" onClick={this.saveChanges} variant="outline-secondary">Save</Button>
 
             </form>
 
