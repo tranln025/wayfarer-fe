@@ -1,22 +1,42 @@
 .hero {
-  background: red;
-  width: 100%;
+  /* background: red; */
+  width: 90%;
+  height: 80%;
   position: absolute;
-  margin: 0;
+  margin: 0 0 0 10px;
+  overflow: hidden;
 
+  text-align: center;
 }
 
 .hero img {
-  height: 60vh;
+  display: block;
+  top: -100px;
+  height: auto;
+  width: 90%;
+  margin: auto;
+  height: 100%;
   width: 100%;
+  position: relative;
+  text-align: center;
+  object-fit: cover;
+  align-content: center;
+  border-radius: 5px;
+
 }
 
 .post-info {
-  width: 60vw;
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  width: 70vw;
   padding-top: 30px;
   margin-left: 30px;
   text-align: left;
   margin: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 35px;
 }
 
 h2 {
@@ -28,6 +48,7 @@ p {
 }
 
 .edit-buttons-container {
+  margin-top: 60px;
   display: flex;
   flex-direction: row-reverse;
 
@@ -35,4 +56,39 @@ p {
 
 .edit-buttons-container div{
   display: inline;
+}
+
+
+.author-info-container {
+  position: absolute;
+  width: 200px;
+  /* background-color: silver; */
+  top: 85%;
+  left: 7.5%;
+  text-align: center;
+
+}
+
+.author-photo-container {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  text-align: center;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.author-photo-container img {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  object-fit: cover;
+  align-content: center;
+  margin: 0;
+}
+
+.author-info-container p {
+  font-size: 15px;
+
 }

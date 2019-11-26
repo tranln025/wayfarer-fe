@@ -22,7 +22,7 @@ class CityView extends Component {
 
     addPostButton = () => {
         return(
-            <div className="city-img-container">
+            <div className="city-img-container col-7">
                 <img className="city-img" src={this.props.selectedCityObject && this.props.selectedCityObject.photo} alt={this.props.selectedCityObject && this.props.selectedCityObject.name}/>
                 <a onClick={this.handlePostFormOpen} className="add-post-btn btn"><i className="fas fa-plus-circle fa-3x"></i></a>
             </div>

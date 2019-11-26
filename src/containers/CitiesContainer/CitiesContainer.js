@@ -22,6 +22,9 @@ class CitiesContainer extends Component {
         }).catch((err)=>console.log(err));
     }
 
+    // getAllArticles () => {
+
+    // }
     refreshPage = () => {
         console.log("reloading articles");
         this.getArticleList();
@@ -38,26 +41,39 @@ class CitiesContainer extends Component {
     getArticleList = () => {
         let cityName = this.props.match.params.name;
         let capitalizedName = '';
-        if (cityName.split('-').length > 1) {
-            let capitalizedNameList = [];
-            cityName.split('-').forEach((word) => { 
-                capitalizedNameList.push(word.charAt(0).toUpperCase() + word.slice(1));
-            })
-            capitalizedName = capitalizedNameList.join(' ');
-        } else {
-            capitalizedName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
+        if (cityName) {
+            if (cityName.split('-').length > 1) {
+                let capitalizedNameList = [];
+                cityName.split('-').forEach((word) => { 
+                    capitalizedNameList.push(word.charAt(0).toUpperCase() + word.slice(1));
+                })
+                capitalizedName = capitalizedNameList.join(' ');
+            } else {
+                capitalizedName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
+            }
         }
+        
         console.log("getting article list");
-        axios.get(`${process.env.REACT_APP_API_URL}/posts/find?name=${capitalizedName}`, {
-            withCredentials: true,
-        }).then((res)=>{
-            console.log(res)
-            this.setState({articleList: res.data.data.sort((a, b) => (a.postDate < b.postDate) ? 1 : -1)})
-        }).catch((err)=>console.log(err));
-        let cityObject = this.state.cityList.filter(obj => {return obj.name === this.state.selectedCity})[0]
-            this.setState({
-                selectedCityObject: cityObject,
-            })
+        if (cityName) {
+            axios.get(`${process.env.REACT_APP_API_URL}/posts/find?name=${capitalizedName}`, {
+                withCredentials: true,
+            }).then((res)=>{
+                console.log(res)
+                this.setState({articleList: res.data.data.sort((a, b) => (a.postDate < b.postDate) ? 1 : -1)})
+            }).catch((err)=>console.log(err));
+            let cityObject = this.state.cityList.filter(obj => {return obj.name === this.state.selectedCity})[0]
+                this.setState({
+                    selectedCityObject: cityObject,
+                })
+        } else {
+            axios.get(`${process.env.REACT_APP_API_URL}/posts/all`, {
+                withCredentials: true,
+            }).then((res)=>{
+                console.log(res)
+                this.setState({articleList: res.data.data.sort((a, b) => (a.postDate < b.postDate) ? 1 : -1)})
+            }).catch((err)=>console.log(err));
+        }
+       
     }
 
     render () {
