@@ -6,6 +6,7 @@ import EditPostDetails from '../Posts/EditPostDetails/EditPostDetails';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import CommentsContainer from '../../containers/CommentsContainer/CommentsContainer';
 
 class Post extends Component {
   state = {
@@ -89,11 +90,10 @@ class Post extends Component {
           <p>{this.convertDay(this.state.post.postDate)}</p>
           <p>{this.state.post.content}</p>
           {this.state.author._id === localStorage.getItem('uid') && this.addEditButtons()}
-
         </div>
-
+        <CommentsContainer postId={this.props.match.params.postId} />
       </div>
-
+      </>
     )
   };
 };
