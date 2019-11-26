@@ -21,7 +21,7 @@ const Carousel = () => (
         </div>
 
         <div className="carousel-item">
-        <a href="/cities/san-franciso">
+        <a href="/cities/san-francisco">
           <img className="carousel-img" src="https://cdn.aarp.net/content/dam/aarp/travel/destination-guides/2018/04/1140-travel-destination-san-francisco-main-page.imgcache.rev2e8bf9592b441099e8e7efb70e1c1e4b.web.650.370.jpg" alt="san francisco"/>
         </a>
         </div>

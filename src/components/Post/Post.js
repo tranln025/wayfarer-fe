@@ -81,8 +81,9 @@ class Post extends Component {
           <div className="author-photo-container">
             <img id="user-photo" src={this.state.author.photo} />
           </div>
-          {/* <Link to={'/users/' + this.author._id}> */}
+          <Link style={{ textDecoration: 'none' }} to={'/users/' + this.state.author._id}>
             <p>by {this.state.author.username}</p>
+          </ Link>
         </div>
         <div className="post-info">
           <h2>{this.state.post.title}</h2>

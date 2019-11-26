@@ -90,5 +90,9 @@ p {
 
 .author-info-container p {
   font-size: 15px;
+  color: #757575;
+  white-space: pre-line;
+  white-space: pre-wrap;
 
 }
+
