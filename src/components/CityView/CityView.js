@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import PostForm from '../PostForm/PostForm';
-import PostPreview from '../../components/PostPreview/PostPreview';
-
 
 import './CityView.css';
 
