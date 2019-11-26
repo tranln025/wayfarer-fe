@@ -1,0 +1,45 @@
+.card {
+  width: 45%;
+  overflow: hidden;
+  margin: 0px 30px 10px 0px;
+  transition: transform .5s ease;
+  border: 1px solid rgba(100, 149, 237, .4) !important;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.photo-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  text-align: center;
+  display: inline-block;
+}
+  
+.photo-container  img {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  object-fit: cover;
+  align-content: center;
+  margin: 0;
+}
+
+.card-body * {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* .card-body h5 {
+    color: #474747;
+} */
+.card-body h5 {
+    color: #ED7864;
+}
+
+.card-body p {
+    color: #ED7864;
+}

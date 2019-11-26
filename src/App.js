@@ -1,12 +1,42 @@
-import React from 'react';
+//External Imports
+import React, { Component } from 'react';
+import axios from 'axios';
+import { withRouter } from 'react-router-dom';
+
+//Internal Imports
+import Routes from './config/Routes';
+import Navbar from './components/Navbar/Navbar';
+
 import './App.css';
 
-function App() {
-  return (
-    <div>
-      <h1>Ali Sux</h1>
-    </div>
-  );
+class App extends Component {
+  state = {
+    currentUser: localStorage.getItem('uid'),
+  };
+
+  setCurrentUser = (userId) => {
+    this.setState({ currentUser: userId });
+    localStorage.setItem('uid', userId);
+  };
+
+  logout = () => {
+    axios.delete(`${process.env.REACT_APP_API_URL}/auth/logout`, { withCredentials: true })
+      .then(res => {
+        localStorage.removeItem('uid');
+        this.setState({ currentUser: null });
+        this.props.history.push('/');
+      })
+      .catch(err => console.log(err))
+  }
+  
+  render() {
+    return (
+      <div className="App">
+        <Navbar currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} logout={this.logout} />
+        <Routes currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} />
+      </div>
+    );
+  }
 }
 
-export default App;
+export default withRouter(App);

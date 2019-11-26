@@ -1,0 +1,54 @@
+.user-details {
+  border: 1px solid rgba(100, 149, 237, .6);
+  border-radius: 5px;
+  max-width: 400px;
+  height: 700px;
+  margin: 20px;
+  box-sizing: border-box;
+}
+.avatar-container {
+  max-width: 300px;
+  max-height: 300px;
+  overflow: hidden;
+  text-align: center;
+  display: inline-block;
+}
+  
+#avatar {
+  height: auto;
+  max-width: 100%;
+  position: relative;
+  text-align: center;
+  object-fit: cover;
+  align-content: center;
+  border-radius: 10px;
+}
+
+form input {
+  text-align: center;
+  margin: auto; 
+}
+
+#add-file {
+  margin: 0px 0px 30px 90px;
+}
+
+.prof-info {
+  text-align: right;
+}
+.prof-info input {
+  margin: 0 30px 10px 20px;
+  display: inline;
+  width: 210px;
+  font-size: 15px;
+  text-align: left;
+  padding: 0px 5px;
+}
+
+.form-group label {
+  font-size: 15px;
+}
+
+#save {
+  margin: 30px;
+}

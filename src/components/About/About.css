@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.topic {
+  margin: 20px 20px;
+}
+
+.topics {
+  text-align: left;
+}

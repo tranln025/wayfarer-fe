@@ -1,0 +1,51 @@
+.post-preview-container {
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+    margin: 10px 0;
+    border: 1px solid rgba(100, 149, 237, .6);
+    border-radius: 15px;
+}
+
+.post-preview {
+    width: 100%;
+}
+
+.post-preview-container img{
+    width: 150px;
+    height: 150px;
+}
+
+.avatar-container-post-preview {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    text-align: center;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.avatar-container-post-preview img {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    object-fit: cover;
+    align-content: center;
+}
+
+.post-preview-info {
+    width: 70%;
+    margin: 0px 20px;
+    text-align: left;
+}
+
+.post-preview-info h4{
+    color: #ED7864;
+}
+.post-preview-info span {
+    font-size: 15px;
+    line-height: normal;  
+    color: #ED7864;  
+}
+

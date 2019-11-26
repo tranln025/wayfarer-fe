@@ -1,0 +1,35 @@
+.carousel-item {
+  height: 60vh;
+  width: 100%;
+  font-size: 50px;
+  border: 2px;
+}
+
+.carousel-img {
+  height: auto;
+  width: 100%;
+  font-size: 50px;
+  border: 2px;
+  position: absolute;
+  left: 0px;
+  top: -130px
+}
+
+.carousel {
+  width: 100%;  
+  margin-bottom: 20px;
+  background-color: gray;
+  overflow: hidden;
+
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+.container {
+  margin: 0 50px 0 50px;
+  padding: 0 50px 0 50px;
+  width: 100%;
+}
