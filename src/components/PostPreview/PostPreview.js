@@ -16,7 +16,7 @@ const PostPreview = (props) => {
                         </div>
                         <div className="post-preview-info">
                             <h4>{props.article.title}</h4>
-                            <Truncate lines={3} ellipsis={<span>... <a href='/link/to/article'>Read more</a></span>}>
+                            <Truncate charcters={1000} ellipsis={<span>... <a href='/link/to/article'>Read more</a></span>}>
                                 <p>{textPreview}</p>
                             </Truncate>
                         </div>
