@@ -5,6 +5,7 @@ import DeleteConfirmation from './DeleteConfirmation/DeleteConfirmation';
 import EditPostDetails from '../Posts/EditPostDetails/EditPostDetails';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
+import {Link} from 'react-router-dom';
 
 class Post extends Component {
   state = {
