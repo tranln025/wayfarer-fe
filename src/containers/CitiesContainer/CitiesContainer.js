@@ -15,16 +15,17 @@ class CitiesContainer extends Component {
     }
 
     componentDidMount() {
-        axios.get(`${process.env.REACT_APP_API_URL}/cities/all`).then((res)=>{
+        axios.get(`${process.env.REACT_APP_API_URL}/cities/all`)
+        .then((res)=>{
             console.log(res)
-            this.setState({cityList: res.data.data})
+            this.setState({
+                cityList: res.data.data,
+                selectedCity: res.data.data[0].name
+            })
             this.getArticleList()
         }).catch((err)=>console.log(err));
     }
 
-    // getAllArticles () => {
-
-    // }
     refreshPage = () => {
         console.log("reloading articles");
         this.getArticleList();
