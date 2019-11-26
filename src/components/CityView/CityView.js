@@ -33,7 +33,7 @@ class CityView extends Component {
         return (
             <>
                 <div className="city-page row">
-                    <div className="city-info">
+                    <div className="city-info col-5">
                         <h2>{this.props.selectedCityObject && this.props.selectedCityObject.name}</h2>
                         <h5>{this.props.selectedCityObject && this.props.selectedCityObject.country}</h5>
                     </div>
