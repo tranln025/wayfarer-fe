@@ -48,7 +48,7 @@ class CommentsContainer extends Component {
     // Comments panel snippet source: https://www.bootdey.com/snippets/view/Simple-Comment-panel#preview
     return (
       <div className="row bootstrap snippets">
-        <div className="col-md-10 col-md-offset-2 col-sm-12">
+        <div className="col-md col-md-offset-2 col-sm-12">
           <div className="comment-wrapper">
             <div className="panel panel-info">
               <div className="panel-heading">
