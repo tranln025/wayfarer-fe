@@ -73,7 +73,7 @@ class CitiesContainer extends Component {
                             <CityView selectedCity={this.state.selectedCity} cityList={this.state.cityList} articleList={this.state.articleList} refreshPage={this.refreshPage} selectedCityObject={this.state.selectedCityObject}/>
                         </div>
                         <div className="row">
-                            {this.state.articleList.length && this.state.articleList.map((article, index) => 
+                            {this.state.articleList && this.state.articleList.map((article, index) => 
                             <PostPreview article={article} index={index} />
                             )}
                         </div>
