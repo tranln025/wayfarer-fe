@@ -5,7 +5,6 @@ import About from '../About/About';
 import './Splash.css'
 
 const Splash = (props) => {
-  console.log(props)
   return(
     <div className="splash-container">
       <Carousel />

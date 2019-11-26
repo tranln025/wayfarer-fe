@@ -14,15 +14,14 @@ class CityView extends Component {
                 postFormOpen: !prevState.postFormOpen
             }
         });
-        console.log('lahseiufbh')
         this.props.refreshPage();
     };
 
     addPostButton = () => {
         return(
             <a onClick={this.handlePostFormOpen} className="add-post-btn btn"><i className="fas fa-plus-circle fa-3x"></i></a>
-        )
-    }
+        );
+    };
 
     render() {
         return (
@@ -41,8 +40,8 @@ class CityView extends Component {
                     <PostForm postFormOpen={this.state.postFormOpen} handlePostFormOpen={this.handlePostFormOpen} currentUser={this.props.currentUser} />
                 </div>
             </>
-        )
-    }
-}
+        );
+    };
+};
 
 export default CityView;

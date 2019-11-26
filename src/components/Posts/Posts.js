@@ -5,9 +5,6 @@ import { Link } from 'react-router-dom';
 import './Posts.css';
 
 const Posts = (props) => {
-  console.log("props.posts>>>> ", props.posts); // []
-  console.log("halp>>>> ", props.posts)
-
   const posts = props.posts.map(post => {
     return (
       <div key={post._id} className="card mb-3">

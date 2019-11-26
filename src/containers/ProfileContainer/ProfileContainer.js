@@ -18,7 +18,6 @@ class ProfileContainer extends Component {
 
   componentDidMount() {
     const userId = localStorage.getItem('uid');
-    console.log(userId)
     axios.get(`${process.env.REACT_APP_API_URL}/users/findById/${userId}`, {
       withCredentials: true,
     })
@@ -36,7 +35,6 @@ class ProfileContainer extends Component {
     }, function() {
       this.state.storageref.child(`/images/user-${localStorage.getItem('uid')}`).put(this.state.selectedFile, {contentType: 'image/jpeg'}).then(snap => {
         snap.ref.getDownloadURL().then(url => {
-          console.log(url);
           this.setState({profile: {
             photo: url,
           }});
@@ -65,7 +63,6 @@ class ProfileContainer extends Component {
             : <UserInfo profile={this.state.profile} fileSelectedHandler={this.fileSelectedHandler} saveChanges={this.saveChanges} editMode={this.editMode}/>}
           </div>
           <div className="col-md-8">
-            {/* <UserInfo profile={this.state.profile} fileSelectedHandler={this.fileSelectedHandler} editMode={this.editMode}/> */}
             <PostsContainer currentUser={this.props.currentUser}/>
           </div>
         </div>

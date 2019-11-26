@@ -62,7 +62,6 @@ class PostForm extends Component {
       withCredentials: true,
     })
     .then((res) => {
-      console.log('toogle plz',res)
       this.props.handlePostFormOpen();
     })
     .catch((error) => console.log(error));
