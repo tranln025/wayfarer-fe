@@ -23,14 +23,13 @@ class Post extends Component {
   fetchNewPost = () => {
     axios.get(`${process.env.REACT_APP_API_URL}/posts/findById/${this.props.match.params.postId}`)
     .then((res)=> {
-      console.log(res)
       this.setState({
         post: res.data.data,
         author: res.data.data.author
       });
     })
     .catch(err => console.log(err));
-  }
+  };
 
   handleEditPostFormOpen = () => {
     this.setState((prevState) => {
@@ -59,13 +58,12 @@ class Post extends Component {
           </div>
           <div>
             <Button className='edit' onClick={this.handleEditPostFormOpen} variant="outline-primary">Edit</Button>
-            {/* <a onClick={this.handleEditPostFormOpen} className="add-post-btn btn"><i class="far fa-edit"></i></a> */}
             <EditPostDetails postFormOpen={this.state.postFormOpen} handleEditPostFormOpen={this.handleEditPostFormOpen} currentUser={this.props.currentUser} post={this.state.post}/>
           </div>
         </div>
       </>
-    )
-  }
+    );
+  };
   
   render() {
     return(
@@ -91,7 +89,7 @@ class Post extends Component {
           </div>
         </div>
       </>
-    )
+    );
   };
 };
 

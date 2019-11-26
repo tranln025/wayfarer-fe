@@ -19,7 +19,6 @@ class Signup extends Component {
   }
 
   handleChange = (event) => {
-    console.log(event);
     this.setState({
       [event.target.name]: event.target.value,
     });
@@ -28,7 +27,6 @@ class Signup extends Component {
   validateForm = (e) => {
     e.preventDefault();
     if (this.state.password.length < 8) {
-      console.log('password too short');
       this.setState({
         passwordValid: false,
       })
@@ -37,7 +35,6 @@ class Signup extends Component {
         passwordValid: true,
       });
       if (this.state.password !== this.state.password2) {
-        console.log('passwords do not match');
         this.setState({
           password2Valid: false,
         })
@@ -55,7 +52,6 @@ class Signup extends Component {
     })
     .then((res) => {
       if (res.data.status === 400 || res.data.status === 500) {
-        console.log(res.data)
         this.setState({
           usernameValid: false,
           emailValid: false,

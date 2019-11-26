@@ -40,7 +40,6 @@ class EditPostDetails extends Component {
 
   saveChanges = (event) => {
     event.preventDefault();
-    console.log("update post details", event)
     const postId = this.props.post._id;
     let body = {
       city: this.state.city,
@@ -52,7 +51,6 @@ class EditPostDetails extends Component {
       withCredentials: true,
     })
       .then((res) => {
-        console.log(res);
         this.props.handleEditPostFormOpen();
       })
       .catch((err)=>console.log(err));

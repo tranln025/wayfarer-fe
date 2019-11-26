@@ -11,15 +11,14 @@ class DeleteConfirmation extends Component {
   handleDelete = () => {
     axios.delete(`${process.env.REACT_APP_API_URL}/posts/${this.props.match.params.postId}`)
       .then((res) => {
-        console.log("succesfully deleted post", res);
         this.props.history.goBack()
       })
       .catch(err => console.log(err));
-  }
+  };
 
   handleCancel = () => {
     this.props.handleDeleteModalOpen();
-  }
+  };
 
   render() {
     return (

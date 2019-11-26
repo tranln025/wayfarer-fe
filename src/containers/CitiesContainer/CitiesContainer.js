@@ -16,23 +16,16 @@ class CitiesContainer extends Component {
 
     componentDidMount() {
         axios.get(`${process.env.REACT_APP_API_URL}/cities/all`).then((res)=>{
-            console.log(res)
             this.setState({cityList: res.data.data})
             this.getArticleList()
         }).catch((err)=>console.log(err));
     }
 
-    // getAllArticles () => {
-
-    // }
     refreshPage = () => {
-        console.log("reloading articles");
         this.getArticleList();
     }
 
     handleSelect = (city) => {
-        console.log("changing selected city");
-        console.log(city);
         this.setState({
             selectedCity: city,
         }, function() {this.getArticleList()})
@@ -53,12 +46,10 @@ class CitiesContainer extends Component {
             }
         }
         
-        console.log("getting article list");
         if (cityName) {
             axios.get(`${process.env.REACT_APP_API_URL}/posts/find?name=${capitalizedName}`, {
                 withCredentials: true,
             }).then((res)=>{
-                console.log(res)
                 this.setState({articleList: res.data.data.sort((a, b) => (a.postDate < b.postDate) ? 1 : -1)})
             }).catch((err)=>console.log(err));
             let cityObject = this.state.cityList.filter(obj => {return obj.name === this.state.selectedCity})[0]
@@ -69,7 +60,6 @@ class CitiesContainer extends Component {
             axios.get(`${process.env.REACT_APP_API_URL}/posts/all`, {
                 withCredentials: true,
             }).then((res)=>{
-                console.log(res)
                 this.setState({articleList: res.data.data.sort((a, b) => (a.postDate < b.postDate) ? 1 : -1)})
             }).catch((err)=>console.log(err));
         }

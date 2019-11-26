@@ -8,12 +8,6 @@ import './EditUserInfo.css';
 class EditUserInfo extends Component {
 
     state = {
-        // profile: {
-        //     username: '',
-        //     email: '',
-        //     photo: '',
-        //     currentCity: '',
-        // },
         username: '',
         email: '',
         photo: '',
@@ -37,7 +31,6 @@ class EditUserInfo extends Component {
     };
 
     saveChanges = (event) => {
-        console.log("updating user info")
         const userId = localStorage.getItem('uid');
         event.preventDefault();
         let body = {
@@ -50,7 +43,6 @@ class EditUserInfo extends Component {
             withCredentials: true,
         })
             .then((res)=>{
-                console.log(res);
                 this.props.updateState(body);
             })
             .catch((err)=>console.log(err));
@@ -60,10 +52,8 @@ class EditUserInfo extends Component {
         this.setState({
             selectedFile: photo[0]
         }, function() {
-            console.log(photo[0]);
             this.state.storageref.child(`/images/user-${localStorage.getItem('uid')}`).put(this.state.selectedFile, {contentType: 'image/jpeg'}).then(snap => {
                 snap.ref.getDownloadURL().then(url => {
-                    console.log(url);
                     this.setState( {
                     photo: url,
                     });
