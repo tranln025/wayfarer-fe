@@ -98,7 +98,7 @@ class EditUserInfo extends Component {
                 </div>
                 
                 {/* <button name="save-profile" onClick={this.saveChanges}>Save</button> */}
-                <Button name="save-profile" onClick={this.saveChanges} variant="outline-secondary">Save</Button>
+                <Button id="save" name="save-profile" onClick={this.saveChanges} variant="outline-secondary">Save</Button>
 
             </form>
 

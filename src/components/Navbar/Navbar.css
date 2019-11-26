@@ -1,3 +1,4 @@
+
 .bg-dark {
   background-color: cornflowerblue !important;
   -webkit-box-shadow: 0px -2px 28px -5px rgba(0,0,0,0.95); 
@@ -28,3 +29,35 @@
 .btn {
   margin-right: 10px;
 }
+
+.navbar-brand {
+  margin: 0 20px;
+  text-align: left;
+  padding: 0;
+}
+
+
+.form-inline {
+  margin-right: 50px;
+}
+
+
+.logo-container {
+  width: 10%;
+  max-height: 10%;
+  margin: 0;
+  text-align: left;
+  margin: 0 20px;
+  display: inline-block;
+}
+
+.logo-container img {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  object-fit: cover;
+  align-content: center;  
+
+}
+
