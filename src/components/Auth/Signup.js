@@ -20,31 +20,6 @@ class Signup extends Component {
 
   validateForm = (event) => {
     event.preventDefault();
-    axios.get(`${process.env.REACT_APP_API_URL}/users/all`)
-    .then((res) => {
-      res.data.data.forEach((user) => {
-        if (this.state.email === user.email) {
-          console.log('email exists')
-          this.setState({
-            emailValid: false,
-          })
-        } else {
-          this.setState({
-            emailValid: true,
-          });
-        };
-        if (this.state.username === user.username) {
-          console.log('username exists')
-          this.setState({
-            usernameValid: false,
-          })
-        } else {
-          console.log('here');
-          this.setState({
-            usernameValid: true,
-          });
-        };
-      });
       if (this.state.password.length < 8) {
         console.log('password too short')
         this.setState({
@@ -65,14 +40,15 @@ class Signup extends Component {
           password2Valid: true,
         });
       };
-    })
-    .then(() => {
-      if (this.state.usernameValid && this.state.emailValid && this.state.passwordValid && this.state.password2Valid) {
-        this.handleSubmit();
-      } else {
-        this.setState({ state: this.state })
-      };
-    });
+      this.confirmValidation();
+  };
+
+  confirmValidation = () => {
+    if (this.state.usernameValid && this.state.emailValid && this.state.passwordValid && this.state.password2Valid) {
+      this.handleSubmit();
+    } else {
+      this.setState({ state: this.state })
+    };
   };
 
   handleChange = (event) => {
@@ -92,7 +68,21 @@ class Signup extends Component {
       this.props.history.push(`/users/${res.data.data}`);
       this.props.handleSignupModalOpen();
     })
-    .catch((error) => console.log(error));   
+    .catch((res) => {
+      console.log(res.message)
+      if (res.message === "Request failed with status code 400"){
+        console.log(res)
+        this.setState({
+          usernameValid: false,
+        })
+      }
+      if (res.message === "Request failed with status code 400"){
+        console.log(res)
+        this.setState({
+          emailValid: false,
+        })
+      }
+    });  
   };
 
   render() {
