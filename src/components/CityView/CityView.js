@@ -19,7 +19,7 @@ class CityView extends Component {
 
     addPostButton = () => {
         return(
-            <a onClick={this.handlePostFormOpen} className="add-post-btn btn"><i className="fas fa-plus-circle fa-3x"></i></a>
+            <i onClick={this.handlePostFormOpen} className="add-post-btn fas fa-plus-circle fa-3x"></i>
         );
     };
 
